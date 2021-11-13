@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a599e0079728044a66012544e86c7e, type: 3}
+  m_Name: X
+  m_EditorClassIdentifier: 
+  Code: 4
+  Sprite: {fileID: 21300000, guid: b4c951076d2152949a80b2e98d03c570, type: 3}
+  Color: {r: 0.6862745, g: 0, b: 0.94764423, a: 1}
+  ScaleMult: 1

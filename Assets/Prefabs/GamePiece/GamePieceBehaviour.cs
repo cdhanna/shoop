@@ -1,0 +1,162 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Cinemachine;
+using TMPro;
+using UnityEngine;
+
+public class GamePieceBehaviour : MonoBehaviour
+{
+
+    public SpriteRenderer Renderer;
+    public SpriteRenderer BackgroundRenderer;
+    public GamePieceShaderControls ShaderControls;
+    public GamePieceShaderControls SelectionCloudControls;
+
+    public GameBoardBehaviour GameBoardBehaviour;
+    public GamePieceObject PieceObject;
+    public GameBoardObject BoardObject;
+    public Vector2Int Location;
+
+    public Color SelectedColor, DeselectedColor, DeselectedFill;
+
+
+    public CinemachineTargetGroup TargetGroup;
+
+    private Vector3 scaleVel;
+    private Vector3 startScale;
+    public float ScaleBoostOnSelected = 1.2f;
+    private bool _isSelected;
+    
+    public event Action OnMouseClicked, OnMouseEntered, OnMouseExited, OnMouseReleased;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        startScale = transform.localScale;
+    }
+
+    private Coroutine scaleRoutine;
+
+    // Update is called once per frame
+    void Update()
+    {
+        // if (GameBoardBehaviour == null || PieceObject == null) return;
+        //
+        // var x = Mathf.SmoothStep(1f, ScaleBoostOnSelected, 
+        //     Mathf.Pow(GameBoardBehaviour.HoverStack.Count / (float)GameBoardBehaviour.PieceBehaviours.Count, .5f));
+        // x = .5f; // TODO: FIX THIS.
+        // var largeScale = startScale * x;
+        //
+        // var targetScale = _isSelected ? largeScale : startScale;
+        // transform.localScale = Vector3.SmoothDamp(transform.localScale, targetScale, ref scaleVel, .2f);
+    }
+
+    IEnumerator SetScale(Vector3 start, Vector3 end, float duration)
+    {
+        if (end.magnitude < .01f) yield break;
+        
+        transform.localScale = start;
+        do
+        {
+            transform.localScale = Vector3.SmoothDamp(transform.localScale, end, ref scaleVel, duration);
+            yield return null;
+        } while ((transform.localScale - end).magnitude > .03f);
+
+        transform.localScale = end;
+
+    }
+
+    public void Set(GameBoardObject board)
+    {
+        BoardObject = board;
+    }
+    
+    public void Set(GameBoardSlot slot)
+    {
+        Location = slot.Location;
+        Set(slot.PieceObject);
+        DeselectInStack();
+    }
+
+    public void Set(GamePieceObject pieceObject)
+    {
+        if (PieceObject != null)
+        {
+            Renderer.transform.localScale /= PieceObject.ScaleMult;
+        }
+        PieceObject = pieceObject;
+        Renderer.color = PieceObject.Color;
+        Renderer.transform.localScale *= PieceObject.ScaleMult;
+
+
+        DeselectInStack();
+        ShaderControls.SetTexture(PieceObject.Sprite, .2f);
+    }
+
+    private void OnMouseDown()
+    {
+        OnMouseClicked?.Invoke();
+    }
+
+    private void OnMouseEnter()
+    {
+        OnMouseEntered?.Invoke();
+    }
+
+    private void OnMouseExit()
+    {
+        OnMouseExited?.Invoke();
+    }
+
+    private void OnMouseUp()
+    {
+        OnMouseReleased?.Invoke();
+    }
+
+    public void SelectInStack()
+    {
+        _isSelected = true;
+        if (scaleRoutine != null)
+        {
+            StopCoroutine(scaleRoutine);
+            
+        };
+        scaleRoutine = StartCoroutine(SetScale(startScale, startScale * 1.1f, .2f));
+        // BackgroundRenderer.color = PieceObject.Color;
+        // ShaderControls.BorderColor = SelectedColor;
+        SelectionCloudControls.SetColors(PieceObject.Color, DeselectedColor);
+
+
+        var brighter = PieceObject.Color;
+        brighter = Color.Lerp(brighter, Color.white, .5f);
+        
+        ShaderControls.SetColors(PieceObject.Color, brighter);
+        SetTargetGroupWeight(1 + .07f * Mathf.Pow(GameBoardBehaviour.HoverStack.Count, .2f));
+
+        
+    }
+
+    public void DeselectInStack()
+    {
+        _isSelected = false;
+        if (scaleRoutine != null)
+        {
+            StopCoroutine(scaleRoutine);
+            
+        };
+        scaleRoutine = StartCoroutine(SetScale( startScale * 1.1f, startScale, .2f));
+        // BackgroundRenderer.color = DeselectedColor;
+        SelectionCloudControls.SetColors(DeselectedColor, DeselectedColor);
+        ShaderControls.SetColors(DeselectedFill, PieceObject.Color);
+        SetTargetGroupWeight(1f);
+        // ShaderControls.BorderColor = Renderer.color;
+
+    }
+
+    public void SetTargetGroupWeight(float weight)
+    {
+        if (!TargetGroup) return;
+        TargetGroup.m_Targets[TargetGroup.FindMember(transform)].weight = weight;
+    }
+}
