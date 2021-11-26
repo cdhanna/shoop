@@ -32,5 +32,10 @@ public class CheatBehaviour : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameBoardBehaviour.StartHintShow();
+        }
+
     }
 }

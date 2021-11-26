@@ -43,8 +43,11 @@ public class GameBoardBehaviour : MonoBehaviour
     
     public StarBehaviour Star1, Star2, Star3;
 
+    public GamePieceShaderControls HintControl;
 
     public Dictionary<GamePieceObject, int> CurrentCounts { get; private set; }
+
+    private Coroutine _hintRoutine;
     
     
     // Start is called before the first frame update
@@ -465,6 +468,70 @@ public class GameBoardBehaviour : MonoBehaviour
         }
     }
 
+    private SpriteRenderer _lastHint;
+    
+    public void StartHintShow()
+    {
+        if (_hintRoutine != null) StopCoroutine(_hintRoutine);
+
+        
+        var targetScale = new Vector3(2.8f, 2.8f, 1f);
+        HintControl.transform.localScale = Vector3.zero;
+
+        
+        IEnumerator Show()
+        {
+            var move = GameBoardAI.Solve(GetBoardState()).FirstOrDefault();
+            //GameBoardBehaviour.PerformSwap(move);
+
+            foreach (var clusterPiece in move.Cluster)
+            {
+                var slot = this.BoardObject.Slots.FirstOrDefault(s => s.Location == clusterPiece.Location);
+                var piece = PieceBehaviours.FirstOrDefault(p => p.Location == clusterPiece.Location);
+
+                TryToAddToStack(slot, piece);
+
+                yield return new WaitForSecondsRealtime(.35f);
+            }
+
+            
+            var targetPiece = PieceBehaviours.First(p => p.Location == move.Target.Location);
+            
+            HintControl.SetColors(new Color(0,0,0,.6f), targetPiece.PieceObject.Color, .01f );
+            var startTime = Time.realtimeSinceStartup;
+            var endTime = startTime + .4f;
+            HintControl.transform.position = targetPiece.transform.position;
+            
+  
+            //
+            // var explosion = Object.Instantiate(ExplosionBehaviour, transform);
+            // explosion.SetColor(targetPiece.PieceObject.Color);
+            // explosion.transform.position = targetPiece.transform.position;
+            // // explosion.transform.localScale *= .85f;
+            // explosion.Blowup();
+
+            targetPiece.Renderer.sortingOrder = HintControl.Renderer.sortingOrder + 1;
+            _lastHint = targetPiece.Renderer;
+            
+            while (Time.realtimeSinceStartup < endTime)
+            {
+                var r = (Time.realtimeSinceStartup - startTime) / (endTime - startTime);
+                HintControl.transform.localScale = Vector3.Lerp(Vector3.zero, targetScale, r);
+                
+                yield return null;
+            }
+
+            HintControl.transform.localScale = targetScale;
+            // CameraShakeBehaviour.TryShake(.3f, .4f);
+
+            
+            yield return null;
+        }
+
+        _hintRoutine = StartCoroutine(Show());
+    }
+
+
     bool IsSlotNextToStack(GameBoardSlot slot) => HoverStack.Any(s => (s.Location - slot.Location).sqrMagnitude <= 1);
     void AddToStack(GamePieceBehaviour gamePieceBehaviour)
     {
@@ -496,6 +563,9 @@ public class GameBoardBehaviour : MonoBehaviour
         }
         SwapCheck = null;
         HoverStack.Clear();
+        HintControl.transform.localScale = Vector3.zero;
+        if (_lastHint)
+            _lastHint.sortingOrder = 0;
     }
 
     private void OnMouseUp()

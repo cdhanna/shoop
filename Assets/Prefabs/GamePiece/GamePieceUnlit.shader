@@ -4,18 +4,21 @@ Shader "Unlit/GamePieceUnlit"
 {
 	Properties
 	{
-		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
+//		[PerRendererData] 
+		_MainTex ("Sprite Texture", 2D) = "white" {}
 		[PerRendererData] _Main2Tex ("Sprite Next Texture", 2D) = "white" {}
 		[PerRendererData] _TexLerp ("Sprite Lerp", Range(0, 1)) = 0
 		
 		_Color ("Tint", Color) = (1,1,1,1)
-		[PerRendererData] _OutlineColor ("Outline", Color) = (1,1,1,1)
+//		[PerRendererData] 
+		_OutlineColor ("Outline", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 		_SDFThreshold("SDF Threshold", Range(0, 1)) = .5
 		_Smoothness("SDF Smooth", Range(0, 2)) = .01
 		_OutlineThickness("Outline Thickness", Range(0, 1)) = .5
 		_OutlineInnerSmooth("Outline Inner Smooth", Range(0, 1)) = 0
-		[PerRendererData] _NoisePower("Noise Power", Range(0, 1)) = .4
+//		[PerRendererData] 
+		_NoisePower("Noise Power", Range(0, 1)) = .4
 		
 		_StencilComp		("Stencil Comparison", Float) = 8
 		_Stencil			("Stencil ID", Float) = 0
