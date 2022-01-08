@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public class GameBoardBehaviour : MonoBehaviour
 {
@@ -48,6 +52,23 @@ public class GameBoardBehaviour : MonoBehaviour
     public Dictionary<GamePieceObject, int> CurrentCounts { get; private set; }
 
     private Coroutine _hintRoutine;
+
+    public SoundManifestObject SoundManifestObject;
+
+    public AudioSource DialAudioSource;
+    
+    PostProcessVolume m_Volume;
+    public ChromaticAberration m_Aberration;
+
+    public Bloom m_Bloom;
+
+    public GameObject StarScoreContainer;
+    public GameObject StarCountContainer;
+
+    public GameCanvasController Menu;
+
+    public event Action OnNextInput; 
+    
     
     
     // Start is called before the first frame update
@@ -58,6 +79,34 @@ public class GameBoardBehaviour : MonoBehaviour
             BoardObject = loader.NextBoard;
             Debug.Log("Found " + loader.NextBoard.Seed);
         }
+
+        if (BoardObject?.Flags?.ExtraPrefab)
+        {
+            Instantiate(BoardObject.Flags.ExtraPrefab);
+        }
+        
+
+        Flags = new GameFlags
+        {
+            DisablePieces = BoardObject.Flags.DisablePieces,
+            DisableRequirements = BoardObject.Flags.DisableRequirements,
+            DisableStars = BoardObject.Flags.DisableStars,
+            DisableUndo = BoardObject.Flags.DisableUndo,
+            DisableHInts = BoardObject.Flags.DisableHInts,
+            DisableMoveCounter = BoardObject.Flags.DisableMoveCounter,
+            DisableStarCounter = BoardObject.Flags.DisableStarCounter,
+            DisableInput = BoardObject.Flags.DisableInput
+        };
+        
+        
+        m_Aberration = ScriptableObject.CreateInstance<ChromaticAberration>();
+        m_Aberration.enabled.Override(true);
+        m_Aberration.intensity.Override(.15f);
+
+        m_Bloom = ScriptableObject.CreateInstance<Bloom>();
+        m_Bloom.enabled.Override(true);
+
+        m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_Aberration, m_Bloom);
 
         SeedText.text = BoardObject.Seed.ToString();
 
@@ -71,15 +120,121 @@ public class GameBoardBehaviour : MonoBehaviour
 
         _loseTextStartColor = LoseCountControls.BorderColor;
         
+        StarSpendUI.color = new Color(0,0,0,0);
         SetMoveText();
+        
     }
+    
+    private GameFlags _flags = new GameFlags();
+    public GameFlags Flags = new GameFlags();
 
+    public TextMeshProUGUI ContinueText;
+    private int _lastInputListenerText;
+    private Sequence _inputSequence;
+    private Sequence _inputSequenceShow;
+
+    private bool _wasWon;
+    private float _winAt;
+
+    public bool IsWinForAMoment => IsWinForDuration();
+    public bool IsWinForDuration(float forDuration = .3f)
+    {
+        return _wasWon && (Time.realtimeSinceStartup > _winAt + forDuration);
+    }
+    
     // Update is called once per frame
     void Update()
     {
         var curState = GetBoardState();
         CurrentCounts = curState.PieceCounts;
+
+
+        void HandleWinTracker()
+        {
+            if (IsWin && !_wasWon)
+            {
+                // start time!
+                _winAt = Time.realtimeSinceStartup;
+            }
+
+            _wasWon = IsWin;
+        }
+        HandleWinTracker();
+
+        void HandleListenerUI()
+        {
+            var listenerCount = OnNextInput?.GetInvocationList().Length ?? 0;
+            if (listenerCount != _lastInputListenerText)
+            {
+                if (listenerCount > 0)
+                {
+                    // don't show it for the first .3 seconds...
+                    _inputSequenceShow?.Kill();
+                    _inputSequence?.Kill();
+
+                    _inputSequenceShow = DOTween.Sequence().AppendInterval(.4f).Append(ContinueText.DOFade(.2f, .2f));
+                }
+                else
+                {
+                    // debounce this...
+                    _inputSequence?.Kill();
+                    _inputSequence = DOTween.Sequence().AppendInterval(.4f).Append(ContinueText.DOFade(0, .2f));
+                }
+
+                _lastInputListenerText = listenerCount;
+            }
+        }
+
+
+        HandleListenerUI();
+        
+        var b = false;
+        CheckDisable(ref _flags.DisableRequirements, ref Flags.DisableRequirements, RequirementContainer.gameObject);
+        // CheckDisable(ref b, ref Flags.DisableMoveCounter, MoveCountControls.gameObject);
+        CheckDisable(ref _flags.DisableMoveCounter, ref Flags.DisableMoveCounter, LoseCountControls.gameObject, MoveCountControls.gameObject);
+        CheckDisable(ref _flags.DisableMoveCounter, ref Flags.DisableMoveCounter, StarScoreContainer);
+        CheckDisable(ref _flags.DisableStarCounter, ref Flags.DisableStarCounter, StarCountContainer);
+        CheckDisable(ref _flags.DisableStars, ref Flags.DisableStars, StarScoreContainer);
+        CheckDisable(ref _flags.DisablePieces, ref Flags.DisablePieces, PieceContainer.gameObject);
+        
     }
+
+    void TriggerInputListener()
+    {
+        OnNextInput?.Invoke();
+        OnNextInput = null;
+    }
+
+
+    void CheckDisable(ref bool state, ref bool actual, params GameObject[] roots)
+    {
+        CheckDisable(ref state, ref actual, .2f, roots);
+    }
+
+    private Dictionary<GameObject, Vector3> _disableOriginalScales = new Dictionary<GameObject, Vector3>();
+    
+    void CheckDisable(ref bool state, ref bool actual, float duartion, params GameObject[] roots)
+    {
+        if (state != actual)
+        {
+            if (actual)
+            {
+                foreach (var root in roots)
+                {
+                    _disableOriginalScales[root] = root.transform.localScale;
+                    root.transform.DOScale(Vector3.zero, .2f);
+                }
+            }
+            else
+            {
+                foreach (var root in roots)
+                    root.transform.DOScale(_disableOriginalScales[root], .2f);
+            }
+
+            state = actual;
+        }
+    }
+    
 
     public GameBoardState GetBoardState()
     {
@@ -95,7 +250,7 @@ public class GameBoardBehaviour : MonoBehaviour
         };
     }
 
-    void SpawnRequirements()
+    public void SpawnRequirements()
     {
         ClearRequirementContainer();
         for (var i = 0; i < BoardObject.Requirements.Count; i++)
@@ -107,6 +262,9 @@ public class GameBoardBehaviour : MonoBehaviour
             instance.transform.localPosition = new Vector3(5 * (ratio - .5f), 0, 0);
         }
         var bounds = BoardObject.ValidBounds;
+
+        var dud = false;
+        // CheckDisable(ref dud, ref Flags.DisableRequirements, 0, RequirementContainer.gameObject);
 
         // RequirementContainer.position = new Vector3(0, -.5f * (bounds.height + 2), 0);
         //RequirementContainer.position = new Vector3(0, .5f * (bounds.height + 2), 0);
@@ -140,8 +298,12 @@ public class GameBoardBehaviour : MonoBehaviour
 
     public void GotoMenu()
     {
-        LevelLoader.GotoMenu();
+        TransitionHelperBehaviour.Instance.TransitionAndDoThing(LevelLoader.GotoMenu);
+        
     }
+
+    public bool HasHint => (_hintRoutine != null) || _hintMove != null;
+    
 
     void SpawnPiece(RectInt bounds, GameBoardSlot slot)
     {
@@ -160,16 +322,23 @@ public class GameBoardBehaviour : MonoBehaviour
         instance.TargetGroup = CameraTargetGroup;
         instance.OnMouseClicked += () =>
         {
+            TriggerInputListener();
+            
+            if (HasHint)
+            {
+                PerformSwap(_hintMove);
+                return;
+            }
+            
             if (IsBuildingStack)
             {
-
                 return;
             }
             
             // if the current click is in the stack, this is a deselection
             if (HoverStack.Contains(instance) || instance.PieceObject == StackType)
             {
-                ClearStack();
+                ClearStack(false);
                 return;
             } 
             // if the current click is not in the stack, but there _is_ a stack, this _might_ be a swap. It's a swap if the mouse is released _quickly_ in the same square
@@ -224,11 +393,12 @@ public class GameBoardBehaviour : MonoBehaviour
     void SetMoveText()
     {
 
+        
         var sprite = ScoreWinSprite;
         if (!IsWin)
         {
             sprite = NumbersObject.GetSpriteForNumber(Math.Max(0, MovesLeft));
-            if (MovesLeft <= 0)
+            if (MovesLeft <= 0 || Flags.DisableMoveCounter)
             {
                 MoveCountControls.SetSDFProperties(0, 1, .3f);
                 MoveCountControls.SetColors(new Color(0,0,0,0), new Color(0,0,0,0), .5f);
@@ -239,6 +409,8 @@ public class GameBoardBehaviour : MonoBehaviour
                 MoveCountControls.SetColors(_startScoreFill, _startScoreBorder, .1f);
             }
 
+            if (Flags.DisableMoveCounter) return;
+            
             switch (MovesLeft)
             {
                 case int m when m > 0:
@@ -286,97 +458,66 @@ public class GameBoardBehaviour : MonoBehaviour
                     break;
             }
             MoveCountControls.SetTexture(sprite);
-            // if (MovesLeft > 0)
-            // {
-            //     Star1.Appear();
-            //     
-            //     Star2.ScootTowardsTop();
-            //     Star3.ScootTowardsTop();
-            // }
-            // if (MovesLeft == 0)
-            // {
-            //     Star1.Vanish();
-            //     Star2.Appear();
-            //     Star2.ScootTowardsTemp();
-            //     Star3.ScootTowardsTemp();
-            // }
-            //
-            // if (MovesLeft == -1)
-            // {
-            //     Star2.Vanish();
-            //     Star2.ScootTowardsTemp2();
-            //     Star3.ScootTowardsTemp2();
-            //     Star3.Appear();
-            // }
-            //
-            //
-            // if (MovesLeft == -2)
-            // {
-            //     Star3.Vanish();
-            //     LoseCountControls.SetColors(LoseCountControls.StartColor, _loseTextStartColor);
-            //     LoseCountControls.SetSDFProperties(LoseCountControls.StartSDFThreshold, LoseCountControls.StartSDFSmoothness);
-            //
-            // }
-            // else
-            // {
-            //     LoseCountControls.SetColors(new Color(0,0,0,0), new Color(0,0,0,0));
-            //     LoseCountControls.SetSDFProperties(1, 1);
-            // }
-            // if (MovesLeft > -2)
-            // {
-            //     
-            // }
         }
         else 
         {
-            MoveCountControls.SetSDFProperties(_startScoreTextSDFThreshold, _startScoreTextSDFSmooth, .2f);
-            MoveCountControls.SetColors(_startScoreFill, _startScoreBorder, .1f);
-
-            
-            // if star 2 is available, thats the "leftmost" star for some stupid reason.
-            switch (MovesLeft)
+            if (!Flags.DisableMoveCounter)
             {
-                case 0:
-                    Star3.Appear();
-                    Star2.Appear();
-                    Star1.Appear();
-                    Star3.WinTarget = StarWin3;
-                    Star2.WinTarget = StarWin1;
-                    Star1.WinTarget = StarWin2;
-                    Star3.ScootTowardsScore(.3f, 1);
-                    Star2.ScootTowardsScore(.3f, .5f);
-                    Star1.ScootTowardsScore(.3f, .75f);
-                    break;
-                case -1:
-                    Star3.Appear();
-                    Star2.Appear();
-                    Star1.Appear();
-                    Star3.WinTarget = StarWin2;
-                    Star2.WinTarget = StarWin1;
-                    Star1.WinTarget = StarWin3;
-                    Star3.ScootTowardsScore(.3f, .75f);
-                    Star2.ScootTowardsScore(.3f, .5f);
-                    Star1.ScootTowardsScore(.3f, 1f, false);
-                    break;
-                case -2:
-                    Star3.Appear();
-                    Star2.Appear();
-                    Star1.Appear();
-                    Star3.WinTarget = StarWin1;
-                    Star2.WinTarget = StarWin2;
-                    Star1.WinTarget = StarWin3;
-                    Star3.ScootTowardsScore(.3f, .5f);
-                    Star2.ScootTowardsScore(.3f, .75f, false);
-                    Star1.ScootTowardsScore(.3f, 1f, false);
-                    break;
+
+
+                MoveCountControls.SetSDFProperties(_startScoreTextSDFThreshold, _startScoreTextSDFSmooth, .2f);
+                MoveCountControls.SetColors(_startScoreFill, _startScoreBorder, .1f);
+            }
+
+            if (!Flags.DisableStars)
+            {
+                // if star 2 is available, thats the "leftmost" star for some stupid reason.
+                switch (MovesLeft)
+                {
+                    case 0:
+                        Star3.Appear();
+                        Star2.Appear();
+                        Star1.Appear();
+                        Star3.WinTarget = StarWin3;
+                        Star2.WinTarget = StarWin1;
+                        Star1.WinTarget = StarWin2;
+                        Star3.ScootTowardsScore(.3f, 1);
+                        Star2.ScootTowardsScore(.3f, .5f);
+                        Star1.ScootTowardsScore(.3f, .75f);
+                        break;
+                    case -1:
+                        Star3.Appear();
+                        Star2.Appear();
+                        Star1.Appear();
+                        Star3.WinTarget = StarWin2;
+                        Star2.WinTarget = StarWin1;
+                        Star1.WinTarget = StarWin3;
+                        Star3.ScootTowardsScore(.3f, .75f);
+                        Star2.ScootTowardsScore(.3f, .5f);
+                        Star1.ScootTowardsScore(.3f, 1f, false);
+                        break;
+                    case -2:
+                        Star3.Appear();
+                        Star2.Appear();
+                        Star1.Appear();
+                        Star3.WinTarget = StarWin1;
+                        Star2.WinTarget = StarWin2;
+                        Star1.WinTarget = StarWin3;
+                        Star3.ScootTowardsScore(.3f, .5f);
+                        Star2.ScootTowardsScore(.3f, .75f, false);
+                        Star1.ScootTowardsScore(.3f, 1f, false);
+                        break;
+                }
             }
 
 
-
-            sprite = ScoreWinSprite;
-            MoveCountControls.SetTexture(sprite);
-            LoseCountControls.SetColors(new Color(0,0,0,0), new Color(0,0,0,0));
-            LoseCountControls.SetSDFProperties(1, 1);
+            if (!Flags.DisableMoveCounter)
+            {
+                sprite = ScoreWinSprite;
+                MoveCountControls.SetTexture(sprite);
+                LoseCountControls.SetColors(new Color(0, 0, 0, 0), new Color(0, 0, 0, 0));
+                LoseCountControls.SetSDFProperties(1, 1);
+            }
         } 
 
 
@@ -389,7 +530,8 @@ public class GameBoardBehaviour : MonoBehaviour
         if (Swaps.Count == 0) return;
         var swap = Swaps.Pop();
         swap.Backwards();
-        
+        DialAudioSource.PlayOneShot(SoundManifestObject.UndoSound, 1.5f);
+
         SwapCheck = null;
         ClearStack();
         MoveCount--;
@@ -398,16 +540,28 @@ public class GameBoardBehaviour : MonoBehaviour
 
     void PerformSwap()
     {
+
         var move = new SwapMove(this, HoverStack, SwapCheck) {ExplosionBehaviour = ExplosionBehaviour};
         move.Forwards(() =>
         {
+            _hintMove = null;
             MoveCount++;
             SetMoveText();
         });
 
+        if (HintControl.transform.localScale.x > .1f)
+        {
+            DialAudioSource.PlayOneShot(SoundManifestObject.HintAcceptSound);
+        }
+        else
+        {
+            DialAudioSource.PlayOneShot(SoundManifestObject.AcceptSound);
+            
+        }
         Swaps.Push(move);
         SwapCheck = null;
         ClearStack();
+
 
     }
 
@@ -419,9 +573,12 @@ public class GameBoardBehaviour : MonoBehaviour
         };
         move.Forwards(() =>
         {
+            _hintMove = null;
+
             MoveCount++;
             SetMoveText();
         });
+        DialAudioSource.PlayOneShot(SoundManifestObject.HintAcceptSound);
   
         Swaps.Push(move);
         SwapCheck = null;
@@ -438,7 +595,8 @@ public class GameBoardBehaviour : MonoBehaviour
     void TryToAddToStack(GameBoardSlot slot, GamePieceBehaviour gamePieceBehaviour)
     {
 
-        if (MovesLeft == -2 || IsWin) return; 
+        if (Flags.DisableInput) return;
+        if ( !Flags.DisableStars && (MovesLeft == -2 || IsWin)) return; 
         
         
         if (HoverStack.Contains(gamePieceBehaviour))
@@ -468,20 +626,65 @@ public class GameBoardBehaviour : MonoBehaviour
         }
     }
 
+    public StarStateProvider StarStateProvider;
+    public SpriteRenderer StarSpendUI;
+    public Color StarSpendColor;
     private SpriteRenderer _lastHint;
+    private GameSwapMove _hintMove;
     
     public void StartHintShow()
     {
-        if (_hintRoutine != null) StopCoroutine(_hintRoutine);
+        if (_hintRoutine != null)
+        {
+            
+            StopCoroutine(_hintRoutine);
+            _hintRoutine = null;
+        }
 
         
-        var targetScale = new Vector3(2.8f, 2.8f, 1f);
-        HintControl.transform.localScale = Vector3.zero;
-
+        var targetScale = new Vector3(8.4f, 8.4f, 1f);
         
+
         IEnumerator Show()
         {
+            
+            // subtract 3 
+            StarStateProvider.GetState().Stars -= 3;
+
+            var startPos = StarSpendUI.transform.position.y;
+            var startColor = StarSpendUI.color;
+            var dingCount = 0;
+            
+            void Ding(int repeats=0)
+            {
+                StarSpendUI.color = StarSpendColor;
+                
+                StarSpendUI.DOFade(.9f, .168f).SetEase(Ease.OutBounce);
+                // StarSpendUI.DOColor(new Color(StarC, 0, 0, .6), .16f).SetEase(Ease.OutBounce);
+                StarSpendUI.transform.DOBlendableLocalRotateBy(new Vector3(0, 0, Random.Range(-30, 30)), .15f);
+                StarSpendUI.transform.parent.DOPunchScale(Vector3.one * .05f, .12f);
+                StarSpendUI.transform.DOMoveY(startPos - .6f, .17f).SetEase(Ease.OutBounce).OnComplete(
+                    () =>
+                    {
+                        StarSpendUI.transform.position = new Vector3(StarSpendUI.transform.position.x, startPos, 0);
+                        StarSpendUI.color = new Color(0,0,0,0);
+
+                        if (repeats > 0)
+                        {
+                            Ding(repeats - 1);
+                        }
+                    });
+            }
+
+            Ding(2);
+    
+            yield return new WaitForSecondsRealtime(.7f); // TODO: We can splice this with the actual move calculation to smooth out lag.
+
+            var boardState = GetBoardState();
+            var moves = GameBoardAI.Solve(boardState).ToList();
+            
             var move = GameBoardAI.Solve(GetBoardState()).FirstOrDefault();
+            _hintMove = move;
             //GameBoardBehaviour.PerformSwap(move);
 
             foreach (var clusterPiece in move.Cluster)
@@ -499,9 +702,10 @@ public class GameBoardBehaviour : MonoBehaviour
             
             HintControl.SetColors(new Color(0,0,0,.6f), targetPiece.PieceObject.Color, .01f );
             var startTime = Time.realtimeSinceStartup;
-            var endTime = startTime + .4f;
+            var endTime = startTime + .5f;
             HintControl.transform.position = targetPiece.transform.position;
-            
+            yield return new WaitForSecondsRealtime(.02f);
+            HintControl.transform.localScale = Vector3.one * 200;
   
             //
             // var explosion = Object.Instantiate(ExplosionBehaviour, transform);
@@ -512,11 +716,12 @@ public class GameBoardBehaviour : MonoBehaviour
 
             targetPiece.Renderer.sortingOrder = HintControl.Renderer.sortingOrder + 1;
             _lastHint = targetPiece.Renderer;
-            
+            DialAudioSource.PlayOneShot(SoundManifestObject.HintStartSound);
+
             while (Time.realtimeSinceStartup < endTime)
             {
                 var r = (Time.realtimeSinceStartup - startTime) / (endTime - startTime);
-                HintControl.transform.localScale = Vector3.Lerp(Vector3.zero, targetScale, r);
+                HintControl.transform.localScale = Vector3.Lerp(Vector3.one * 200, targetScale, r);
                 
                 yield return null;
             }
@@ -526,6 +731,8 @@ public class GameBoardBehaviour : MonoBehaviour
 
             
             yield return null;
+            _hintRoutine = null;
+
         }
 
         _hintRoutine = StartCoroutine(Show());
@@ -553,13 +760,21 @@ public class GameBoardBehaviour : MonoBehaviour
     Dictionary<GamePieceObject, int> GetPieceCounts => PieceBehaviours
             .GroupBy(p => p.PieceObject)
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Count());
-    
-    
-    void ClearStack()
+
+    public bool IsOver { get; set; }
+
+
+    void ClearStack(bool quiet=true)
     {
         foreach (var s in HoverStack)
         {
             s.DeselectInStack();
+        }
+
+        if (HoverStack.Count > 0 && !quiet)
+        {
+            
+            DialAudioSource.PlayOneShot(SoundManifestObject.GetRandomDeselectSound(), .6f);
         }
         SwapCheck = null;
         HoverStack.Clear();
@@ -579,8 +794,19 @@ public class GameBoardBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        ClearStack();
+        TriggerInputListener();
+
+        if (HasHint)
+        {
+            PerformSwap(_hintMove);
+            return;
+        }
+        ClearStack(false);
+
     }
+    
+    
+    
 }
 
 [Serializable]
@@ -610,6 +836,23 @@ public class SwapMove
     {
         ExplosionBehaviour explosion = null;
 
+
+       // Board.m_Aberration.intensity.Override(1);
+        DOTween.To(() => Board.m_Aberration.intensity.value, v => Board.m_Aberration.intensity.Override(v), 1, .15f)
+            .SetEase(Ease.OutBounce).OnComplete(
+                () =>
+                {
+                    DOTween.To(() => Board.m_Aberration.intensity.value, v => Board.m_Aberration.intensity.Override(v),
+                        .15f, .15f).SetEase(Ease.InBounce);
+                });
+        
+        DOTween.To(() => Board.m_Bloom.intensity.value, v => Board.m_Bloom.intensity.Override(v), 4, .15f)
+            .SetEase(Ease.OutBounce).OnComplete(
+                () =>
+                {
+                    DOTween.To(() => Board.m_Bloom.intensity.value, v => Board.m_Bloom.intensity.Override(v),
+                        3f, .2f).SetEase(Ease.InBounce);
+                });
         
         explosion = Object.Instantiate(ExplosionBehaviour, Board.transform);
         explosion.SetColor(GroupType.Color);

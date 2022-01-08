@@ -10,6 +10,8 @@ Shader "Unlit/GamePieceUnlit"
 		[PerRendererData] _TexLerp ("Sprite Lerp", Range(0, 1)) = 0
 		
 		_Color ("Tint", Color) = (1,1,1,1)
+		_InvertDistance ("Invert Distance", Float) = 0 
+		_ForegroundGain ("Foreground Gain", Range(0, 2)) = 0 
 //		[PerRendererData] 
 		_OutlineColor ("Outline", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
@@ -88,6 +90,8 @@ Shader "Unlit/GamePieceUnlit"
 			fixed4 _OutlineColor;
 			float _NoisePower;
 			float _TexLerp;
+			float _InvertDistance;
+			float _ForegroundGain;
 
 			v2f vert(appdata_t IN)
 			{
@@ -171,6 +175,7 @@ Shader "Unlit/GamePieceUnlit"
 				fixed4 c = lerp(c1, c2, _TexLerp);
 				float d = c.a;
 
+				d = _InvertDistance * (1 - d) + (1 - _InvertDistance)*d;
 				
 				c.rgb = _Color.rgb * IN.color.rgb;
 				//c.a *= _Color.a * IN.color.a;
@@ -188,6 +193,7 @@ Shader "Unlit/GamePieceUnlit"
 				//outline = 1 - outline;
 				
 				//c.rgb *= m;
+				// outline = outline * (_ForegroundGain + 1);
 				float4 x = lerp(c.rgba, _OutlineColor, 1 - sqrt(min(1.0, (outline ))));
 
 				//x = outline;
@@ -198,6 +204,7 @@ Shader "Unlit/GamePieceUnlit"
 				// c.a -= n;
 				//if (c.a < 0){ c.a = 0;}
 				c.a *= IN.color.a * _Color.a * m;
+				c.a *= (_ForegroundGain + 1);
 				c.rgb *= c.a;
 				//c.rgb *= m;
 				//c.a = 

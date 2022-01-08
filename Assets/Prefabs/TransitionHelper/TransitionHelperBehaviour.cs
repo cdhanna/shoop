@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,12 @@ public class TransitionHelperBehaviour : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
+
+
+        var cam = FindObjectOfType<Camera>();
+        Right = cam.orthographicSize * cam.aspect * Right * 2;
+        Left = cam.orthographicSize * cam.aspect * Left * 2;
+
     }
 
     // Update is called once per frame
@@ -29,34 +36,45 @@ public class TransitionHelperBehaviour : MonoBehaviour
         
     }
 
-    public void StartNextTransition()
+    public void TransitionAndDoThing(Action thing)
     {
-         
+        IEnumerable Func()
+        {
+            thing();
+            yield break;
+        }
+        TransitionAndDoThing( Func() );
+    }
+
+    public void TransitionAndDoThing(IEnumerable thing)
+    {
         IEnumerator LoadNext()
         {
             // disable the virtual camera
             
             // animate to the right-
 
-            foreach (var _ in Routine_Enter(.3f))
+            foreach (var _ in Routine_Enter(.4f))
             {
                 yield return _;
             }
 
             var expectedDelay = .2f;
 
+            BackgroundBehaviour.Instance.PickColors();
+
             var now = Time.realtimeSinceStartup;
-            foreach (var _ in LevelLoader.GetInstance().GotoNextBackgroundGeneration())
+            foreach (var _ in thing)
             {
                 yield return _;
             }
 
             var actualDelay = Time.realtimeSinceStartup - now;
             var forcedDelay = Mathf.Max(0, expectedDelay - actualDelay);
+
             yield return new WaitForSeconds(forcedDelay);
-            BackgroundBehaviour.Instance.PickColors();
             
-            foreach (var _ in Routine_Exit(.5f))
+            foreach (var _ in Routine_Exit(.4f))
             {
                 yield return _;
             }
@@ -64,6 +82,44 @@ public class TransitionHelperBehaviour : MonoBehaviour
             // fade in stuff
         }
         StartCoroutine(LoadNext());
+    }
+    
+
+    public void StartNextTransition()
+    {
+         TransitionAndDoThing(LevelLoader.GetInstance().GotoNextLevel());
+        // IEnumerator LoadNext()
+        // {
+        //     // disable the virtual camera
+        //     
+        //     // animate to the right-
+        //
+        //     foreach (var _ in Routine_Enter(1f))
+        //     {
+        //         yield return _;
+        //     }
+        //
+        //     var expectedDelay = .2f;
+        //
+        //     var now = Time.realtimeSinceStartup;
+        //     foreach (var _ in LevelLoader.GetInstance().GotoNextLevel())
+        //     {
+        //         yield return _;
+        //     }
+        //
+        //     var actualDelay = Time.realtimeSinceStartup - now;
+        //     var forcedDelay = Mathf.Max(0, expectedDelay - actualDelay);
+        //     yield return new WaitForSeconds(forcedDelay);
+        //     BackgroundBehaviour.Instance.PickColors();
+        //     
+        //     foreach (var _ in Routine_Exit(.5f))
+        //     {
+        //         yield return _;
+        //     }
+        //     
+        //     // fade in stuff
+        // }
+        // StartCoroutine(LoadNext());
 
     }
 

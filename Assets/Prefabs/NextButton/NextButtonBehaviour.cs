@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,13 +31,19 @@ public class NextButtonBehaviour : MonoBehaviour
 
         _activePosition = transform.localPosition;
         _inactivePosition = _activePosition + InactivePosition;
+        
+        
+        NextButton.onClick.AddListener(() =>
+        {
+            NextButton.targetGraphic.transform.DOPunchScale(Vector3.one *.2f, .1f);
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
         // is valid?
-        var isValid = GameBoardBehaviour.IsWin;
+        var isValid = GameBoardBehaviour.IsWin && !GameBoardBehaviour.IsOver;
 
         NextButton.interactable = isValid & !_animating;
         
@@ -56,11 +64,26 @@ public class NextButtonBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-
-        Debug.Log("NExt up!!");
-
-
+        // 1 thing happens
         var transition = TransitionHelperBehaviour.Instance;
-        transition.StartNextTransition();
+        
+        // and another thing happens
+
+        GameBoardBehaviour.IsOver = true;
+
+        
+        var obj = GameObject.FindObjectOfType<StarCounterBehaviour>();
+        if (obj && !GameBoardBehaviour.Flags.DisableStars)
+        {
+            this.DoRoutine(obj.TakeNewStars(), () =>
+            {
+                transition.StartNextTransition();
+            });
+        }
+        else
+        {
+            transition.StartNextTransition();
+        }
+
     }
 }

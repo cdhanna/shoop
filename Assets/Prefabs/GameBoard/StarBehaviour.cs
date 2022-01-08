@@ -30,6 +30,11 @@ public class StarBehaviour : MonoBehaviour
     private bool _isAtScore = false;
 
     private bool _isInit;
+
+    public bool _isWin;
+
+    public SoundManifestObject SoundManifestObject;
+    public AudioSource DialSource;
     
     // Start is called before the first frame update
     void Start()
@@ -88,8 +93,19 @@ public class StarBehaviour : MonoBehaviour
         _isAtTemp2 = false;
         _isAtScore = true;
         _isAtTop = false;
+        _isWin = isWin;
         if (isWin)
-        Controls.SetColors(isWin ? WinFillColor : new Color(0,0,0,.3f), WinBorderColor, duration, colorDelay);
+        {
+            Controls.SetColors(isWin ? WinFillColor : new Color(0, 0, 0, .3f), WinBorderColor, duration, colorDelay);
+
+            IEnumerator PlaySound()
+            {
+                yield return new WaitForSecondsRealtime(colorDelay);
+                DialSource.PlayOneShot(SoundManifestObject.ShowStarGain);
+
+            }
+            StartCoroutine(PlaySound());
+        }
 
         ScootToPosition(WinTarget, duration);
     }
@@ -123,6 +139,7 @@ public class StarBehaviour : MonoBehaviour
                 transform.localScale = Vector3.Lerp(startScale, targetScale, r);
                 yield return null;
             }
+
         }
         transform.eulerAngles = new Vector3(0, 0, 0);
 
@@ -134,6 +151,8 @@ public class StarBehaviour : MonoBehaviour
     {
         if (_isVanished) return;
         _isVanished = true;
+        
+        
         
         if (_vanishRoutine != null) StopCoroutine(_vanishRoutine);
         
@@ -149,9 +168,11 @@ public class StarBehaviour : MonoBehaviour
                 transform.localScale = Vector3.Lerp(_startScale, _startScale + Vector3.one * 3, r);
                 yield return null;
             }
+            yield return new WaitForSecondsRealtime(.1f);
+            DialSource.PlayOneShot(SoundManifestObject.LoseStar, .7f);
         }
         Controls.SetSDFProperties(0, 1, .6f);
-        
+
         _vanishRoutine = StartCoroutine(Routine());
     }
 
@@ -159,6 +180,9 @@ public class StarBehaviour : MonoBehaviour
     {
         if (!_isVanished) return;
         _isVanished = false;
+        
+        
+        
         if (_vanishRoutine != null) StopCoroutine(_vanishRoutine);
         var startTime = Time.realtimeSinceStartup;
         var endTime = startTime + .1f;
@@ -172,8 +196,14 @@ public class StarBehaviour : MonoBehaviour
                 transform.localScale = Vector3.Lerp(startScale, _vanishedScale, r);
                 yield return null;
             }
+            
+            yield return new WaitForSecondsRealtime(.1f);
+            DialSource.PlayOneShot(SoundManifestObject.ShowStarGain);
+
         }
         Controls.SetSDFProperties(_startSDF, _startSmooth, .3f);
+        
+
         
         _vanishRoutine = StartCoroutine(Routine());
     }

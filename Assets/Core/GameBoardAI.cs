@@ -237,7 +237,7 @@ public class GameBoardState
                 if (!counts.TryGetValue(req.PieceObject, out var currentCount) || currentCount != req.RequiredCount)
                     return false;
             }
-
+            
             return true;
             // return Requirements.All(r =>
             //     counts.TryGetValue(r.PieceObject, out var currentCount) && currentCount == r.RequiredCount);
@@ -330,7 +330,6 @@ public class GameBoardState
         void FloodCluster(HashSet<GameBoardSlot> cluster, GameBoardSlot start)
         {
             if (cluster.Contains(start)) return;
-            seenSlots.Add(start);
 
             var orig = start;
             cluster.Add(start);
@@ -369,9 +368,6 @@ public class GameBoardState
         
         foreach (var slot in Slots)
         {
-            if (seenSlots.Contains(slot)) continue;
-
-            seenSlots.Add(slot);
             
             // new cluster!
             var cluster = new HashSet<GameBoardSlot>();
@@ -382,6 +378,8 @@ public class GameBoardState
         foreach (var cluster in clusters)
         {
             if (cluster.Count == 0) continue;
+            
+
             var clusterPiece = cluster.First().PieceObject;
             var clusterLocations = new HashSet<Vector2Int>(cluster.Select(c => c.Location));
 

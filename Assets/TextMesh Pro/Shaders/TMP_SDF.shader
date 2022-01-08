@@ -239,6 +239,8 @@ SubShader {
 
 			float c = tex2D(_MainTex, input.atlas).a;
 
+			
+			
 		#ifndef UNDERLAY_ON
 			clip(c - input.param.x);
 		#endif

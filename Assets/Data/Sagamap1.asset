@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfba215a65e81d04193e36bb3c24d2ef, type: 3}
+  m_Name: Sagamap1
+  m_EditorClassIdentifier: 
+  Levels:
+  - name: 1
+    LevelObject: {fileID: 11400000, guid: 9a34c70380cf7774ca2de93a64cb8b52, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: -1
+    UseGenerator: 0
+  - name: 2
+    LevelObject: {fileID: 11400000, guid: 7335f169bd13de74cb4c668f56db53f3, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: -1
+    UseGenerator: 0
+  - name: 3
+    LevelObject: {fileID: 11400000, guid: 62b814845b570884e97e24129c09c0d7, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: -1
+    UseGenerator: 0
+  - name: 4
+    LevelObject: {fileID: 11400000, guid: 7d1f4d8da5c215f4688296d86db204ff, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: -1
+    UseGenerator: 0
+  - name: 5
+    LevelObject: {fileID: 11400000, guid: 234520d7ff6a74940b223d0378302be6, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: -1
+    UseGenerator: 0
+  - name: 6
+    LevelObject: {fileID: 0}
+    GeneratorObject: {fileID: 11400000, guid: b5409b325d1755a49a6eebf09eebcf5a, type: 2}
+    Seed: 2
+    UseGenerator: 1
+  - name: 7
+    LevelObject: {fileID: 0}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 1
+  - name: 8
+    LevelObject: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: 1
+    UseGenerator: 0
+  ContinuationGeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}

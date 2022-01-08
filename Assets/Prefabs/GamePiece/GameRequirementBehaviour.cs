@@ -32,9 +32,12 @@ public class GameRequirementBehaviour : MonoBehaviour
         {
            
             NumberSpriteControls.SetColors(_requirement.PieceObject.Color, _requirement.PieceObject.Color);
+            GamePieceBehaviour.ShaderControls.SetColors(_requirement.PieceObject.Color, _requirement.PieceObject.Color);
         } else if (!isCorrect && IsCorrect)
         {
             NumberSpriteControls.SetColors(Color.black, _requirement.PieceObject.Color);
+            GamePieceBehaviour.ShaderControls.SetColors(Color.black, _requirement.PieceObject.Color);
+
         }
 
         IsCorrect = isCorrect;

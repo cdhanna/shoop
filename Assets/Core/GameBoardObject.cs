@@ -11,6 +11,7 @@ public class GameBoardObject : ScriptableObject
     public List<GameBoardRequirement> Requirements;
     public int PerfectMoveCount;
     public int Seed;
+    public GameFlags Flags = new GameFlags();
     
     public IEnumerable<GameBoardSlot> ValidSlots => Slots.Where(s => s != null);
     
@@ -34,6 +35,20 @@ public class GameBoardObject : ScriptableObject
     {
         return Requirements.FirstOrDefault(p => p.PieceObject == piece)?.RequiredCount ?? 0;
     }
+}
+
+[Serializable]
+public class GameFlags
+{
+    public bool DisableMoveCounter;
+    public bool DisableStars;
+    public bool DisableUndo;
+    public bool DisableHInts;
+    public bool DisableStarCounter;
+    public bool DisableRequirements;
+    public bool DisablePieces;
+    public bool DisableInput;
+    public GameObject ExtraPrefab;
 }
 
 [Serializable]

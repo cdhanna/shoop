@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfba215a65e81d04193e36bb3c24d2ef, type: 3}
+  m_Name: TestTrack
+  m_EditorClassIdentifier: 
+  Levels:
+  - name: 1
+    LevelObject: {fileID: 11400000, guid: 4acd660240f7e0c40b4595d949ad9f4d, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: -1
+    UseGenerator: 0
+  - name: 2
+    LevelObject: {fileID: 0}
+    GeneratorObject: {fileID: 11400000, guid: b5409b325d1755a49a6eebf09eebcf5a, type: 2}
+    Seed: 5
+    UseGenerator: 1
+  - name: 3
+    LevelObject: {fileID: 11400000, guid: 234520d7ff6a74940b223d0378302be6, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: b5409b325d1755a49a6eebf09eebcf5a, type: 2}
+    Seed: -1
+    UseGenerator: 0
+  ContinuationGeneratorObject: {fileID: 0}

@@ -12,6 +12,10 @@ public class LevelLoader : MonoBehaviour
 
     public GameBoardObject NextBoard;
 
+    public SagaMap SagaMap;
+
+    public IStarState StarState = new SagamapPlayerPrefs(); // TODO: get this from somewhere else... 
+    
     private GameBoardGeneratorObject _generator;
     private Coroutine _backgroundGenerationRoutine;
 
@@ -45,6 +49,23 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    public ISagaMapState GetSagaState()
+    {
+        return new SagamapPlayerPrefs();
+    }
+
+    public void LoadSagamap(SagaMap map)
+    {
+        SagaMap = map;
+        var board = SagaMap.Generate(GetSagaState());
+        LoadLevel(board);
+    }
+
+    public void ClearSagamap(SagaMap map)
+    {
+        GetSagaState().Reset(map);
+    }
+
     public void LoadLevel(GameBoardObject gameBoardObject)
     {
         NextBoard = gameBoardObject;
@@ -64,6 +85,39 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public IEnumerable GotoNextLevel()
+    {
+        Debug.Log("Going to next level");
+        if (SagaMap)
+        {
+            Debug.Log("Going to next level via sagamap");
+
+            var state = GetSagaState();
+            state.NextLevel(SagaMap);
+            
+            var board = SagaMap.Generate(GetSagaState()); // TODO: we can pregenerate some of these levels...
+            Debug.Log(board);
+            NextBoard = board;
+            yield return SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
+        } else if (_generator)
+        {
+            foreach (var _ in GotoNextBackgroundGeneration())
+            {
+                yield return _;
+            }
+        }
+        else if (NextBoard)
+        {
+            Debug.Log("Going to next level via direct level");
+
+            yield return SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
+        }
+        else
+        {
+            yield return null;
+        }
+    }
+    
     public IEnumerable GotoNextBackgroundGeneration()
     {
         while (GeneratedBacklog.Count == 0)

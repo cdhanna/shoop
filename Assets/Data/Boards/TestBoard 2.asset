@@ -39,3 +39,14 @@ MonoBehaviour:
   - RequiredCount: 1
     PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
   PerfectMoveCount: 3
+  Seed: 0
+  Flags:
+    DisableMoveCounter: 0
+    DisableStars: 0
+    DisableUndo: 0
+    DisableHInts: 0
+    DisableStarCounter: 0
+    DisableRequirements: 0
+    DisablePieces: 0
+    DisableInput: 0
+    ExtraPrefab: {fileID: 0}

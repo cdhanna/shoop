@@ -8,13 +8,15 @@ Shader "Unlit/UISDF"
 		_Main2Tex ("Sprite Next Texture", 2D) = "white" {}
 		 _TexLerp ("Sprite Lerp", Range(0, 1)) = 0
 		
-		_Color ("Tint", Color) = (1,1,1,1)
-		 _OutlineColor ("Outline", Color) = (1,1,1,1)
+		[HDR]_Color ("Tint", Color) = (1,1,1,1)
+		[HDR] _OutlineColor ("Outline", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 		_SDFThreshold("SDF Threshold", Range(0, 1)) = .5
 		_Smoothness("SDF Smooth", Range(0, 2)) = .01
 		_OutlineThickness("Outline Thickness", Range(0, 1)) = .5
 		_NoisePower("Noise Power", Range(0, 1)) = .4
+		
+		_OffsetPower("Offset Power", Range(0, 1)) = 0
 		
 		_StencilComp		("Stencil Comparison", Float) = 8
 		_Stencil			("Stencil ID", Float) = 0
@@ -83,6 +85,7 @@ Shader "Unlit/UISDF"
 			fixed4 _OutlineColor;
 			float _NoisePower;
 			float _TexLerp;
+			float _OffsetPower;
 
 			v2f vert(appdata_t IN)
 			{
@@ -148,6 +151,7 @@ Shader "Unlit/UISDF"
 
 			fixed4 SampleSpriteTexture (sampler2D sample, float2 uv)
 			{
+				uv.x = clamp(0, 1, uv.x);
 				fixed4 color = tex2D (sample, uv);
 
 #if UNITY_TEXTURE_ALPHASPLIT_ALLOWED
@@ -160,8 +164,15 @@ Shader "Unlit/UISDF"
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
-				fixed4 c1 = SampleSpriteTexture (_MainTex, IN.texcoord);// * IN.color;
-				fixed4 c2 = SampleSpriteTexture (_Main2Tex, IN.texcoord);// * IN.color;
+
+
+				float offsetx = .2 * (worldWind(IN.worldPos.xy * .01, float2(1, 1)) - .5);
+				float offsety = .2 * (worldWind(IN.worldPos.xy * .05 + float2(325.123, 3928.2), float2(1, .5)) - .5);
+
+				float2 offset = _OffsetPower * float2(offsetx, offsety);
+				
+				fixed4 c1 = SampleSpriteTexture (_MainTex, IN.texcoord + offset);// * IN.color;
+				fixed4 c2 = SampleSpriteTexture (_Main2Tex, IN.texcoord + offset);// * IN.color;
 
 				fixed4 c = lerp(c1, c2, _TexLerp);
 				float d = c.a;
@@ -171,6 +182,7 @@ Shader "Unlit/UISDF"
 				//c.a *= _Color.a * IN.color.a;
 				// c.rgb = 1;
 
+				// float n = 1 * _NoisePower * worldWind(IN.worldPos.xy * .01, float2(11, 14));// + .8 * _NoisePower * worldWind(IN.worldPos.xy * .1, float2(2, 2));
 				float n = _NoisePower * worldWind(IN.worldPos.xy * .8, float2(2, 2)) + .8 * _NoisePower * worldWind(IN.worldPos.xy * .1, float2(2, 2));
 				//c.a += n;
 				d += n;

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332333ebc22b9634c823c4e0482a1849, type: 3}
+  m_Name: Sounds
+  m_EditorClassIdentifier: 
+  Musics:
+  - {fileID: 8300000, guid: 1f604cd951270934586f543d304cfe49, type: 3}
+  - {fileID: 8300000, guid: 32a72499026b92040b909d9397bd95c0, type: 3}
+  - {fileID: 8300000, guid: c3c546aded07c0348b5c5c52c7640fb6, type: 3}
+  - {fileID: 8300000, guid: 628907c3e394d7a4aae6c30804353e01, type: 3}
+  SelectionSounds:
+  - {fileID: 8300000, guid: 144e8e2e4296412448b099086cd41315, type: 3}
+  - {fileID: 8300000, guid: 8e7cf945fac79c14db2491b5f5021dcd, type: 3}
+  - {fileID: 8300000, guid: 17b1888a90ac16944ae9a026580e60a1, type: 3}
+  - {fileID: 8300000, guid: 826e4372f93524d49a553314748cc4d2, type: 3}
+  - {fileID: 8300000, guid: 12d8fa16d0539eb4e860b398b9aa20a5, type: 3}
+  - {fileID: 8300000, guid: 38b3a7f579d91cb42bd6559bcd26ea76, type: 3}
+  - {fileID: 8300000, guid: 6d177d1aaa8e00342b05e03257bad6c9, type: 3}
+  - {fileID: 8300000, guid: 99934899d2fb4b94a94d9aabc772643e, type: 3}
+  AcceptSound: {fileID: 8300000, guid: 176c5f27cac38824a9731ee5d89b0819, type: 3}
+  UndoSound: {fileID: 8300000, guid: f7f5a818e8356d64fa3b1d5cbd3c06ba, type: 3}
+  DeselectSounds:
+  - {fileID: 8300000, guid: b2ab3755c6fb8d343907b7a21370661b, type: 3}
+  - {fileID: 8300000, guid: 9ef32b6948ad1e8469a9d89430fefa82, type: 3}
+  - {fileID: 8300000, guid: 8af932bf95509fa4b9c15e5a10e68b74, type: 3}
+  - {fileID: 8300000, guid: 126d7ba9f9cbb0a4eb676f15a6467488, type: 3}
+  HintStartSound: {fileID: 8300000, guid: 52fc178ab1176554393cf1832e716172, type: 3}
+  HintAcceptSound: {fileID: 8300000, guid: 1a6c28e74c5d6854190835e83a822a6b, type: 3}
+  SpendStarSounds:
+  - {fileID: 8300000, guid: 888661cd5e59f3540b38981d5977a4a3, type: 3}
+  - {fileID: 8300000, guid: b62641b718a8dbc45b5cc5d4c3eeeb5b, type: 3}
+  - {fileID: 8300000, guid: d2a3ec80825fbaa46bb9879126febd47, type: 3}
+  MenuHoverSound: {fileID: 8300000, guid: 05ab43d225058a340afaae01ee361d7d, type: 3}
+  MenuPushButtonSound: {fileID: 8300000, guid: 9056b3ed29a2df84dbd14fa6cf16d470, type: 3}
+  ShowStarGain: {fileID: 8300000, guid: d2e0cb5ee1f775649bac807b86e70d7f, type: 3}
+  LoseStar: {fileID: 8300000, guid: bff59174cca6c4d46824925787130b89, type: 3}

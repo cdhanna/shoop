@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GamePieceBehaviour : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class GamePieceBehaviour : MonoBehaviour
 
     public CinemachineTargetGroup TargetGroup;
 
+    public AudioSource SelectionAudioSource;
+    public SoundManifestObject SoundManifestObject;
+    
     private Vector3 scaleVel;
     private Vector3 startScale;
     public float ScaleBoostOnSelected = 1.2f;
@@ -34,6 +38,10 @@ public class GamePieceBehaviour : MonoBehaviour
     void Start()
     {
         startScale = transform.localScale;
+        
+        // select a random sound for the selection
+        SelectionAudioSource.clip =
+            SoundManifestObject.SelectionSounds[Random.Range(0, SoundManifestObject.SelectionSounds.Count)];
     }
 
     private Coroutine scaleRoutine;
@@ -134,7 +142,7 @@ public class GamePieceBehaviour : MonoBehaviour
         ShaderControls.SetColors(PieceObject.Color, brighter);
         SetTargetGroupWeight(1 + .07f * Mathf.Pow(GameBoardBehaviour.HoverStack.Count, .2f));
 
-        
+        SelectionAudioSource.Play();
     }
 
     public void DeselectInStack()

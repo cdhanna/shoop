@@ -36,6 +36,8 @@ public class BackgroundBehaviour : MonoBehaviour
     {
         
     }
+
+    public BackgroundColors ActiveColors => Colors[_lastColorsIndex];
     
 
     public void PickColors(BackgroundColors colors=null)
@@ -66,5 +68,10 @@ public class BackgroundBehaviour : MonoBehaviour
 [Serializable]
 public class BackgroundColors
 {
+    [ColorUsageAttribute(true,true,0f,8f,0.125f,3f)]
+    public Color PrimaryUIFill;
+    [ColorUsageAttribute(true,true,0f,8f,0.125f,3f)]
+    public Color PrimaryUIOutline;
+    
     public Color[] CloudColors;
 }
