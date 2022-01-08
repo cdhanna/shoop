@@ -16,9 +16,6 @@ public class PendingResult<T>
 }
 public class GameBoardAI
 {
-
-
-    
     public static IEnumerable<GameBoardState> BFS(GameBoardObject board,
         Dictionary<GameBoardState, GameBoardState> history = null) => BFS(GameBoardState.FromBoard(board), history);
     public static IEnumerable<GameBoardState> BFS(GameBoardState board, Dictionary<GameBoardState, GameBoardState> history=null)
