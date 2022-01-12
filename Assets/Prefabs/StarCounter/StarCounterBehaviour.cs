@@ -44,11 +44,6 @@ public class StarCounterBehaviour : MonoBehaviour
 
     }
 
-    [ContextMenu("Test Show")]
-    public void Test()
-    {
-        StartCoroutine(TakeNewStars());
-    }
 
     [ContextMenu("Clear")]
     public void Clear()
@@ -57,20 +52,33 @@ public class StarCounterBehaviour : MonoBehaviour
         StarStateProvider.GetState().ResetStars();
     }
     
-    public IEnumerator TakeNewStars()
+    public IEnumerator TakeNewStars(int newStarsToCollect)
     {
         // identify the stars that are valid. 
         yield return new WaitForSecondsRealtime(.1f);
 
         if (BoardBehaviour.Flags.DisableStarCounter) yield break;
-        
+
         var winners = Stars.Where(s => s._isWin).ToList();
+
 
         _isAnimating = true;
         var velocity = (Vector3.right + Vector3.down) * 34;
         var scaleVel = Vector3.one;
+        
         foreach (var winner in winners)
         {
+            newStarsToCollect--;
+            if (newStarsToCollect < 0)
+            {
+                yield return new WaitForSeconds(.1f);
+
+                winner.transform.DOPunchScale(Vector3.one * .4f, .2f);
+                winner.DialSource.PlayOneShot(SoundManifestObject.ShowStarGain);
+
+                yield return new WaitForSeconds(.3f);
+                continue;
+            }
             // animate this towards the dest, and when it gets there, make the desk shroom up. 
 
             velocity = (Vector3.right * 4 + Vector3.down * 6);

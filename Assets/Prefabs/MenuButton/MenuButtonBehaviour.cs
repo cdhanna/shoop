@@ -37,6 +37,7 @@ public class MenuButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public SoundManifestObject SoundManifestObject;
     public AudioSource DialSource;
+    public bool Pointable = true;
     
     // Start is called before the first frame update
     void Start()
@@ -115,6 +116,7 @@ public class MenuButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!Pointable) return;
         if (Button)
         {
             DialSource.PlayOneShot(SoundManifestObject.MenuHoverSound, .1f);
@@ -127,6 +129,8 @@ public class MenuButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!Pointable) return;
+
         DOTween.To(() => _faceColor, c => _faceColor = c, DefaultFaceColor, .1f);
 
         // _instanceMat.SetColor(FaceColor, DefaultFaceColor);

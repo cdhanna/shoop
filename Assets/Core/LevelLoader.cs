@@ -14,8 +14,6 @@ public class LevelLoader : MonoBehaviour
 
     public SagaMap SagaMap;
 
-    public IStarState StarState = new SagamapPlayerPrefs(); // TODO: get this from somewhere else... 
-    
     private GameBoardGeneratorObject _generator;
     private Coroutine _backgroundGenerationRoutine;
 
@@ -51,7 +49,8 @@ public class LevelLoader : MonoBehaviour
 
     public ISagaMapState GetSagaState()
     {
-        return new SagamapPlayerPrefs();
+        return StarStateProvider.SagaState;
+        // return new SagamapPlayerPrefs();
     }
 
     public void LoadSagamap(SagaMap map)

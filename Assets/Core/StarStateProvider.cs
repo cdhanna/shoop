@@ -9,7 +9,17 @@ public interface IStarStateProvider
 
 public class StarStateProvider : MonoBehaviour, IStarStateProvider
 {
-    static IStarState State = new SagamapPlayerPrefs();
+    public static IStarState State => _storage;
+    public static ISagaMapState SagaState => _storage;
+    
+    public static SagamapFileStorage _storage = new SagamapFileStorage();
+
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    public static void OnReset()
+    {
+        _storage = new SagamapFileStorage();
+    }
     
     public IStarState GetState()
     {
