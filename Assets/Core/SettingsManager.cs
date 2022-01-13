@@ -3,27 +3,35 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.PostProcessing;
 
 public class SettingsManager : MonoBehaviour
 {
     public AudioMixer Mixer;
+    public PostProcessProfile Profile;
 
     public void ToggleMusic() => MusicEnabled = !MusicEnabled;
     public void ToggleSound() => SoundEnabled = !SoundEnabled;
+    public void ToggleVFX() => GoodVFXEnabled = !GoodVFXEnabled;
 
 
-    public MenuButtonBehaviour MusicButton, SoundButton;
+    public MenuButtonBehaviour MusicButton, SoundButton, VFXButton;
 
 
     void Start()
     {
         UpdateLabels();
+        UpdateVfxSettings(GoodVFXEnabled);
     }
     
     void UpdateLabels()
     {
-        MusicButton.SetState(!MusicEnabled);
-        SoundButton.SetState(!SoundEnabled);
+        if (MusicButton)
+            MusicButton.SetState(!MusicEnabled);
+        if (SoundButton)
+            SoundButton.SetState(!SoundEnabled);
+        if (VFXButton)
+            VFXButton.SetState(!GoodVFXEnabled);
     }
     
     public bool MusicEnabled
@@ -70,7 +78,33 @@ public class SettingsManager : MonoBehaviour
             PlayerPrefs.SetInt("sound", value ? 1 : 0);
             UpdateLabels();
         }
-    } 
+    }
+
+    public bool GoodVFXEnabled
+    {
+        get => PlayerPrefs.GetInt("vfx", 1) == 1;
+        set
+        {
+            var previous = GoodVFXEnabled;
+            if (previous && !value)
+            {
+                UpdateVfxSettings(false);
+            } else if (!previous && value)
+            {
+                UpdateVfxSettings(true);
+            }
+            PlayerPrefs.SetInt("vfx", value ? 1 : 0);
+            UpdateLabels();
+        }
+    }
+
+    private void UpdateVfxSettings(bool enabled)
+    {
+        
+        Profile.GetSetting<Bloom>().enabled.value = enabled;
+        Profile.GetSetting<Vignette>().enabled.value = enabled;
+        Profile.GetSetting<ChromaticAberration>().enabled.value = enabled;
+    }
 }
 
 public static class AudioExtensions

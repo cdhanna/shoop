@@ -100,11 +100,11 @@ public class GameBoardBehaviour : MonoBehaviour
         
         
         m_Aberration = ScriptableObject.CreateInstance<ChromaticAberration>();
-        m_Aberration.enabled.Override(true);
+        // m_Aberration.enabled.Override(true);
         m_Aberration.intensity.Override(.15f);
 
         m_Bloom = ScriptableObject.CreateInstance<Bloom>();
-        m_Bloom.enabled.Override(true);
+        // m_Bloom.enabled.Override(true);
 
         m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_Aberration, m_Bloom);
 
