@@ -100,7 +100,6 @@ public class SettingsManager : MonoBehaviour
 
     private void UpdateVfxSettings(bool enabled)
     {
-        
         Profile.GetSetting<Bloom>().enabled.value = enabled;
         Profile.GetSetting<Vignette>().enabled.value = enabled;
         Profile.GetSetting<ChromaticAberration>().enabled.value = enabled;

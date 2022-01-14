@@ -43,8 +43,7 @@ public class DumbMenuController : MonoBehaviour
         CanvasGroup.alpha = 0;
         CanvasGroup.DOFade(1, .4f);
         // CanvasGroup.
-        
-
+        Canvas.ForceUpdateCanvases();
         UpdateLevelText();
         
         PreviousLevelButton.Button.onClick.AddListener(() =>
