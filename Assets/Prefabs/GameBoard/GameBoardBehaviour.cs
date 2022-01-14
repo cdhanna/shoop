@@ -764,6 +764,10 @@ public class GameBoardBehaviour : MonoBehaviour
     public bool IsOver { get; set; }
 
 
+    private float clearedStackAt;
+
+    public bool HasEmptyStackForAwhile => (Time.realtimeSinceStartup - clearedStackAt) > .2f;
+    
     void ClearStack(bool quiet=true)
     {
         foreach (var s in HoverStack)
@@ -773,8 +777,12 @@ public class GameBoardBehaviour : MonoBehaviour
 
         if (HoverStack.Count > 0 && !quiet)
         {
-            
             DialAudioSource.PlayOneShot(SoundManifestObject.GetRandomDeselectSound(), .6f);
+        }
+
+        if (HoverStack.Count > 0)
+        {
+            clearedStackAt = Time.realtimeSinceStartup;
         }
         SwapCheck = null;
         HoverStack.Clear();

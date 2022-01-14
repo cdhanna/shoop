@@ -69,6 +69,10 @@ public class UndoButtonBehaviour : MonoBehaviour
 
     public void OnClick()
     {
+        var hasEmpty = GameBoardBehaviour.HasEmptyStackForAwhile;
+        if (!hasEmpty || GameBoardBehaviour.HoverStack.Count > 0) return;
+        
+        
         
         GameBoardBehaviour.Undo();
 
