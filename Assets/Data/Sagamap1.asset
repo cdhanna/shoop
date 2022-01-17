@@ -13,42 +13,56 @@ MonoBehaviour:
   m_Name: Sagamap1
   m_EditorClassIdentifier: 
   Levels:
-  - name: 1
+  - desc: 1
+    index: 0
     LevelObject: {fileID: 11400000, guid: 9a34c70380cf7774ca2de93a64cb8b52, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: -1
     UseGenerator: 0
-  - name: 2
+  - desc: 2
+    index: 1
     LevelObject: {fileID: 11400000, guid: 7335f169bd13de74cb4c668f56db53f3, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: -1
     UseGenerator: 0
-  - name: 3
+  - desc: 3
+    index: 2
     LevelObject: {fileID: 11400000, guid: 62b814845b570884e97e24129c09c0d7, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: -1
     UseGenerator: 0
-  - name: 4
+  - desc: 4
+    index: 3
     LevelObject: {fileID: 11400000, guid: 7d1f4d8da5c215f4688296d86db204ff, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: -1
     UseGenerator: 0
-  - name: 5
+  - desc: 5
+    index: 4
     LevelObject: {fileID: 11400000, guid: 234520d7ff6a74940b223d0378302be6, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: -1
     UseGenerator: 0
-  - name: 6
+  - desc: 6
+    index: 5
     LevelObject: {fileID: 0}
     GeneratorObject: {fileID: 11400000, guid: b5409b325d1755a49a6eebf09eebcf5a, type: 2}
     Seed: 2
     UseGenerator: 1
-  - name: 7
+  - desc: 7
+    index: 6
     LevelObject: {fileID: 0}
     GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
     Seed: 1
     UseGenerator: 1
-  - name: 8
+  - desc: 8
+    index: 7
+    LevelObject: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
+    GeneratorObject: {fileID: 0}
+    Seed: 1
+    UseGenerator: 0
+  - desc: asdf
+    index: 15
     LevelObject: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: 1

@@ -122,6 +122,7 @@ public class MenuButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointer
             DialSource.PlayOneShot(SoundManifestObject.MenuHoverSound, .1f);
 
         }
+        HoverFaceColor = new Color(BackgroundBehaviour.ActiveColors.PrimaryUIOutline.r, BackgroundBehaviour.ActiveColors.PrimaryUIOutline.g, BackgroundBehaviour.ActiveColors.PrimaryUIOutline.b, 1 - BackgroundBehaviour.ActiveColors.PrimaryUIFill.a);
         DOTween.To(() => _faceColor, c => _faceColor = c, HoverFaceColor, .1f);
 
         

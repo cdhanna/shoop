@@ -57,6 +57,7 @@ public class LevelLoader : MonoBehaviour
     {
         SagaMap = map;
         var board = SagaMap.Generate(GetSagaState());
+        StartCoroutine(SagaMap.Pregenerate());
         LoadLevel(board);
     }
 

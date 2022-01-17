@@ -149,14 +149,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 140957362579909284}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &140957362640959605
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.021514893, y: 0.8187866}
+  m_AnchoredPosition: {x: -0.021484375, y: 0.81884766}
   m_SizeDelta: {x: 948.2172, y: 1267.1409}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &140957362640959600
@@ -428,14 +431,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 7473284549282092915}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &8577972555866313305
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,11 +591,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 4568044871462989786}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0

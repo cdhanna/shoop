@@ -16,7 +16,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1f604cd951270934586f543d304cfe49, type: 3}
   - {fileID: 8300000, guid: 32a72499026b92040b909d9397bd95c0, type: 3}
   - {fileID: 8300000, guid: c3c546aded07c0348b5c5c52c7640fb6, type: 3}
-  - {fileID: 8300000, guid: 628907c3e394d7a4aae6c30804353e01, type: 3}
   SelectionSounds:
   - {fileID: 8300000, guid: 144e8e2e4296412448b099086cd41315, type: 3}
   - {fileID: 8300000, guid: 8e7cf945fac79c14db2491b5f5021dcd, type: 3}

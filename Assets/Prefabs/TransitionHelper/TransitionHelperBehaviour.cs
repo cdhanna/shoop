@@ -157,8 +157,4 @@ public class TransitionHelperBehaviour : MonoBehaviour
         
     }
 
-    private void OnDestroy()
-    {
-        Debug.Log("Destroying background :(");
-    }
 }

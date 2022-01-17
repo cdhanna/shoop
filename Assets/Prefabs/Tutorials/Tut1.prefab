@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hey there, <size=200%>pal.</size>
+  m_text: Hey there, <size=200%>friend.</size>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b39cb22bd5316594abd3fa01703d33f9, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 31aebd8dc6230134ebaf4262e0ec24ee, type: 2}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 101.75
+  m_fontSize: 77.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -149,14 +149,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 140957362579909284}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &140957362640959605
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.021514893, y: 0.8187866}
+  m_AnchoredPosition: {x: -0.021484375, y: 0.81884766}
   m_SizeDelta: {x: 948.2172, y: 1267.1409}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &140957362640959600
@@ -249,7 +252,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &140957362640959602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,14 +451,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 9148873670700471012}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &867803702601016576
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,14 +613,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 8254628583644458668}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &2414715825959359885
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,14 +773,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 8485268405564463728}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &3074000198991245312
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,14 +933,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 6120645190047541997}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &3386911407002563494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,14 +1093,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 2533611554477080845}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &3760116166344432978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,14 +1253,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 1565541596849504119}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &4510812751631568565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,14 +1413,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 4302435387570820534}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &6454546268056686516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,14 +1575,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 6250629540942447217}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0
 --- !u!1 &7469894838515791616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,11 +1735,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 0}
   Text: {fileID: 2555201096269594910}
+  Image: {fileID: 0}
   DefaultFaceColor: {r: 0, g: 0, b: 0, a: 0}
   HoverFaceColor: {r: 0, g: 0, b: 0, a: 0}
   OverrideNoisePower: 1
   NoisePower: 0.6
   BackgroundBehaviour: {fileID: 0}
   _instanceMat: {fileID: 0}
+  ImageLerpSprite: {fileID: 0}
   SoundManifestObject: {fileID: 0}
   DialSource: {fileID: 0}
+  Pointable: 0

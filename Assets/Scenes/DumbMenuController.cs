@@ -143,6 +143,11 @@ public class DumbMenuController : MonoBehaviour
         }
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void UpdateLevelText()
     {
         

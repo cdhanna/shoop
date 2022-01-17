@@ -2806,7 +2806,7 @@ PrefabInstance:
     - target: {fileID: 249581488291182700, guid: 9ab9fcdca9e7ea647b0fb0446dddf898, type: 3}
       propertyPath: BoardObject
       value: 
-      objectReference: {fileID: 11400000, guid: 234520d7ff6a74940b223d0378302be6, type: 2}
+      objectReference: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
     - target: {fileID: 249581488291182700, guid: 9ab9fcdca9e7ea647b0fb0446dddf898, type: 3}
       propertyPath: HintControl
       value: 
@@ -3774,7 +3774,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.3, y: 0.15}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 9.999878, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &8846239229276460150
