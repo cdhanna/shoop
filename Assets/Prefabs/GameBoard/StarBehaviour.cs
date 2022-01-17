@@ -198,7 +198,7 @@ public class StarBehaviour : MonoBehaviour
             }
             
             yield return new WaitForSecondsRealtime(.1f);
-            DialSource.PlayOneShot(SoundManifestObject.ShowStarGain);
+            // DialSource.PlayOneShot(SoundManifestObject.ShowStarGain);
 
         }
         Controls.SetSDFProperties(_startSDF, _startSmooth, .3f);

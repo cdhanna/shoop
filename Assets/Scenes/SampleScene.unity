@@ -1865,30 +1865,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2960446895121013536, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
-      propertyPath: Colors.Array.data[4].PrimaryUIFill.b
-      value: 0.50515795
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960446895121013536, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
-      propertyPath: Colors.Array.data[4].PrimaryUIFill.g
-      value: 0.13827574
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960446895121013536, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
-      propertyPath: Colors.Array.data[4].PrimaryUIFill.r
-      value: 0.745283
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960446895121013536, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
-      propertyPath: Colors.Array.data[4].PrimaryUIOutline.b
-      value: 0.21578579
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960446895121013536, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
-      propertyPath: Colors.Array.data[4].PrimaryUIOutline.g
-      value: 0.1331434
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960446895121013536, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
-      propertyPath: Colors.Array.data[4].PrimaryUIOutline.r
-      value: 0.6226415
-      objectReference: {fileID: 0}
     - target: {fileID: 2960446895121013550, guid: 70d2e369022ae5647ad6642e78f485cb, type: 3}
       propertyPath: m_Name
       value: Background
@@ -2830,7 +2806,7 @@ PrefabInstance:
     - target: {fileID: 249581488291182700, guid: 9ab9fcdca9e7ea647b0fb0446dddf898, type: 3}
       propertyPath: BoardObject
       value: 
-      objectReference: {fileID: 11400000, guid: 7335f169bd13de74cb4c668f56db53f3, type: 2}
+      objectReference: {fileID: 11400000, guid: 234520d7ff6a74940b223d0378302be6, type: 2}
     - target: {fileID: 249581488291182700, guid: 9ab9fcdca9e7ea647b0fb0446dddf898, type: 3}
       propertyPath: HintControl
       value: 
