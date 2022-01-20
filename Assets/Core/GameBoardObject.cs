@@ -56,10 +56,12 @@ public class GameBoardSlot
 {
     public Vector2Int Location;
     public GamePieceObject PieceObject;
-
+    public bool IsLocked;
+    public int TouchCount;
+    
     public int GetCode()
     {
-        return CombineHashCodes(Location.x, CombineHashCodes(Location.y, PieceObject.Code));
+        return CombineHashCodes(Location.x, CombineHashCodes(Location.y, CombineHashCodes(IsLocked ? 2 : 1, CombineHashCodes(PieceObject.Code, TouchCount+1))));
     }
     
     private static int CombineHashCodes(int h1, int h2)

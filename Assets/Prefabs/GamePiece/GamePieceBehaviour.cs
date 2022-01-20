@@ -22,6 +22,7 @@ public class GamePieceBehaviour : MonoBehaviour
     public Color SelectedColor, DeselectedColor, DeselectedFill;
 
 
+    private static Color _transparent = new Color(0,0,0,0);
     public CinemachineTargetGroup TargetGroup;
 
     public AudioSource SelectionAudioSource;
@@ -31,6 +32,9 @@ public class GamePieceBehaviour : MonoBehaviour
     private Vector3 startScale;
     public float ScaleBoostOnSelected = 1.2f;
     private bool _isSelected;
+
+    public GamePieceShaderControls LockedShaderControls;
+    public bool IsLocked;
     
     public event Action OnMouseClicked, OnMouseEntered, OnMouseExited, OnMouseReleased;
     
@@ -83,6 +87,17 @@ public class GamePieceBehaviour : MonoBehaviour
     public void Set(GameBoardSlot slot)
     {
         Location = slot.Location;
+
+        IsLocked = slot.IsLocked;
+        if (IsLocked)
+        {
+            LockedShaderControls.SetSDFProperties(.5f, .025f, .3f);
+        }
+        else
+        {
+            LockedShaderControls.Renderer.color = new Color(0, 0, 0, 0);
+        }
+        
         Set(slot.PieceObject);
         DeselectInStack();
     }
@@ -133,16 +148,40 @@ public class GamePieceBehaviour : MonoBehaviour
         scaleRoutine = StartCoroutine(SetScale(startScale, startScale * 1.1f, .2f));
         // BackgroundRenderer.color = PieceObject.Color;
         // ShaderControls.BorderColor = SelectedColor;
+        var selectionColor = GetSelectionColor();
+
         SelectionCloudControls.SetColors(PieceObject.Color, DeselectedColor);
 
-
-        var brighter = PieceObject.Color;
+        var brighter = selectionColor;
         brighter = Color.Lerp(brighter, Color.white, .5f);
         
-        ShaderControls.SetColors(PieceObject.Color, brighter);
+        
+        if (IsLocked)
+        {
+            LockedShaderControls.SetColors(Color.black, Color.Lerp(GetSelectionColor(.8f), Color.white, .8f));
+        }
+
+        
+        ShaderControls.SetColors(selectionColor, brighter);
         SetTargetGroupWeight(1 + .07f * Mathf.Pow(GameBoardBehaviour.HoverStack.Count, .2f));
 
         SelectionAudioSource.Play();
+    }
+
+    private Color GetSelectionColor(float mix = .5f)
+    {
+        var selectionColor = PieceObject.Color;
+        if (IsLocked)
+        {
+            var grey = selectionColor.r + selectionColor.g + selectionColor.b;
+            grey /= 3;
+
+            var greyColor = new Color(grey, grey, grey, selectionColor.a);
+            selectionColor = Color.Lerp(selectionColor, greyColor, mix);
+
+            //selectionColor = ;
+        }
+        return selectionColor;
     }
 
     public void DeselectInStack()
@@ -153,10 +192,22 @@ public class GamePieceBehaviour : MonoBehaviour
             StopCoroutine(scaleRoutine);
             
         };
+        var selectionColor = GetSelectionColor();
+
+        
+        if (IsLocked)
+        {
+            LockedShaderControls.SetColors(Color.grey, GetSelectionColor());
+        }
+        else
+        {
+            LockedShaderControls.SetColors(_transparent, _transparent);
+        }
+        
         scaleRoutine = StartCoroutine(SetScale( startScale * 1.1f, startScale, .2f));
         // BackgroundRenderer.color = DeselectedColor;
         SelectionCloudControls.SetColors(DeselectedColor, DeselectedColor);
-        ShaderControls.SetColors(DeselectedFill, PieceObject.Color);
+        ShaderControls.SetColors(DeselectedFill, selectionColor);
         SetTargetGroupWeight(1f);
         // ShaderControls.BorderColor = Renderer.color;
 

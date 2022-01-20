@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4644369826321186080, guid: 30f3022e3b11103468870f2dcd5b5708, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5079196182382360819, guid: 30f3022e3b11103468870f2dcd5b5708, type: 3}
       propertyPath: m_Name
@@ -103,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 5079196182804400772, guid: 30f3022e3b11103468870f2dcd5b5708, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.4395
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748877523515242509, guid: 30f3022e3b11103468870f2dcd5b5708, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30f3022e3b11103468870f2dcd5b5708, type: 3}

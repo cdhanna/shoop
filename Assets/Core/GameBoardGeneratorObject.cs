@@ -16,6 +16,7 @@ public class GameBoardGeneratorObject : ScriptableObject
     public SelectionRange CellCountRange;
     public SelectionRange PieceTypeCountRange;
     public SelectionRange MoveRange;
+    public SelectionRange LockRange;
 
 
     public GameBoardObject Generate(int seed = -1, GameBoardObject board = null)
@@ -35,6 +36,8 @@ public class GameBoardGeneratorObject : ScriptableObject
         
         board =  CreateInstance<GameBoardObject>();
         board.Seed = seed;
+
+        
         IEnumerable Attempt()
         {
 
@@ -45,7 +48,7 @@ public class GameBoardGeneratorObject : ScriptableObject
             var slots = GenerateSlots(rand, locations);
             board.Slots = slots;
             // step 3. randomly come up with some requirements
-            var reqs = GenerateRequirements(rand, slots);
+            var reqs = GenerateRequirementsByRandomMoves(rand, slots);
             board.Requirements = reqs;
             // step 4. run BFS operation to see how many moves it takes to win
             foreach (var pendingMoveCount in GetMinMovesToWin(board))
@@ -59,6 +62,7 @@ public class GameBoardGeneratorObject : ScriptableObject
                 yield return null;
             }
         }
+        
         var attempts = 0;
         while (board.PerfectMoveCount < MoveRange.Min || board.PerfectMoveCount > MoveRange.Max || GameBoardState.FromBoard(board).IsWin)
         {
@@ -157,19 +161,87 @@ public class GameBoardGeneratorObject : ScriptableObject
         var uniqueCount = PieceTypeCountRange.RandomValue(rand);
         var randomList = PieceCollection.Pieces.ToList();
         randomList.Sort((a, b) => rand.Next(-1, 1));
+
+
+        var totalLocks = LockRange.RandomValue(rand, .5f);
+        var lockCount = 0;
+        // weight the total 
         
         foreach (var local in locations)
         {
+            var isLock = lockCount < totalLocks && rand.NextDouble() > .5;
+            if (isLock)
+            {
+                lockCount++;
+            }
             slots.Add(new GameBoardSlot
             {
+                IsLocked = isLock,
                 Location = local,
-                PieceObject = randomList[ rand.Next(uniqueCount) ]
+                PieceObject = randomList[ rand.Next(uniqueCount) ],
+                TouchCount = 0
             });
         }
             
         return slots;
     }
 
+    
+    List<GameBoardRequirement> GenerateRequirementsByRandomMoves(Random rand, List<GameBoardSlot> slots)
+    {
+        // start with a copy of the current slot state.
+        var state = new GameBoardState()
+        {
+            Slots = slots.Select(p => new GameBoardSlot
+            {
+                IsLocked = p.IsLocked,
+                Location = p.Location,
+                PieceObject = p.PieceObject,
+                TouchCount = 0
+            }).ToList()
+        };
+
+        var moveCount = 50;
+        while (moveCount > 0)
+        {
+            moveCount--;
+            var randoCount = rand.Next(1, 25);
+            
+            // use the existing "find neighbors" expand function to get some random neighboring state.
+            foreach (var subState in state.Expand())
+            {
+                randoCount--;
+                state = subState;
+                if (randoCount <= 0)
+                {
+                    break;
+                }
+            }
+
+        }
+
+        // count up the occurances of each piece type
+        var reqDict = new Dictionary<GamePieceObject, int>();
+        foreach (var slot in state.Slots)
+        {
+            if (!reqDict.TryGetValue(slot.PieceObject, out var existing))
+            {
+                existing = 0;
+            }
+
+            existing++;
+            reqDict[slot.PieceObject] = existing;
+        }
+
+        // convert to a list
+        return reqDict.Select(kvp => new GameBoardRequirement
+        {
+            PieceObject = kvp.Key,
+            RequiredCount = kvp.Value
+        }).ToList();
+        
+    }
+    
     List<GameBoardRequirement> GenerateRequirements(Random rand, List<GameBoardSlot> slots)
     {
         var uniqueTypes = new HashSet<GamePieceObject>(slots.Select(s => s.PieceObject)).ToList();
@@ -226,4 +298,13 @@ public struct SelectionRange
     public int Min, Max;
 
     public int RandomValue(Random rand) => rand.Next(Min, Max);
+
+    public int RandomValue(Random rand, float multiplier)
+    {
+        var range = Max - Min;
+        var i = (rand.NextDouble() * multiplier);
+        var x = Min + (range * i);
+
+        return Math.Min(Max, Math.Max(Min, Mathf.RoundToInt((float)x)));
+    }
 }

@@ -15,24 +15,117 @@ MonoBehaviour:
   Slots:
   - Location: {x: 0, y: 0}
     PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 0, y: 1}
     PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 0, y: -1}
     PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: -1, y: 0}
     PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 1, y: 0}
     PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 0, y: -2}
     PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 1, y: -1}
     PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   Requirements:
   - RequiredCount: 6
     PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
   - RequiredCount: 1
     PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
   PerfectMoveCount: 2
+  Seed: 0
+  Flags:
+    DisableMoveCounter: 0
+    DisableStars: 0
+    DisableUndo: 0
+    DisableHInts: 0
+    DisableStarCounter: 0
+    DisableRequirements: 0
+    DisablePieces: 0
+    DisableInput: 0
+    ExtraPrefab: {fileID: 0}
+--- !u!114 &-6008788654643682794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1882c4318825f1e4ebd5c48dcb9f1279, type: 3}
+  m_Name: MultiLock
+  m_EditorClassIdentifier: 
+  Slots:
+  - Location: {x: 0, y: 0}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 0, y: 1}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 1
+    TouchCount: 0
+  - Location: {x: 0, y: -1}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 1, y: -1}
+    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: -1, y: 1}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 1
+    TouchCount: 0
+  - Location: {x: 1, y: -2}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: -1, y: 0}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: -1, y: 2}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 2, y: -2}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  Requirements:
+  - RequiredCount: 4
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+  - RequiredCount: 3
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+  - RequiredCount: 2
+    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+  PerfectMoveCount: 3
+  Seed: 1608836009
+  Flags:
+    DisableMoveCounter: 0
+    DisableStars: 0
+    DisableUndo: 0
+    DisableHInts: 0
+    DisableStarCounter: 0
+    DisableRequirements: 0
+    DisablePieces: 0
+    DisableInput: 0
+    ExtraPrefab: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,6 +148,77 @@ MonoBehaviour:
   MoveRange:
     Min: 2
     Max: 4
+  LockRange:
+    Min: 0
+    Max: 5
+--- !u!114 &4117563766552895254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1882c4318825f1e4ebd5c48dcb9f1279, type: 3}
+  m_Name: Sample
+  m_EditorClassIdentifier: 
+  Slots:
+  - Location: {x: 0, y: 0}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 1, y: 0}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 2, y: 0}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 1
+    TouchCount: 0
+  - Location: {x: 1, y: 1}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 3, y: 0}
+    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 0, y: 1}
+    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 0, y: -1}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: -1, y: 0}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 0, y: -2}
+    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  Requirements:
+  - RequiredCount: 4
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+  - RequiredCount: 2
+    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+  - RequiredCount: 3
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+  PerfectMoveCount: 3
+  Seed: 82677667
+  Flags:
+    DisableMoveCounter: 0
+    DisableStars: 0
+    DisableUndo: 0
+    DisableHInts: 0
+    DisableStarCounter: 0
+    DisableRequirements: 0
+    DisablePieces: 0
+    DisableInput: 0
+    ExtraPrefab: {fileID: 0}
 --- !u!114 &9026127144931265340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,25 +234,54 @@ MonoBehaviour:
   Slots:
   - Location: {x: 0, y: 0}
     PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: -1, y: 0}
     PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 0, y: 1}
     PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 0, y: -1}
     PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 1, y: -1}
     PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 1, y: 0}
     PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: -1, y: -1}
     PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: 0, y: -2}
     PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   - Location: {x: -2, y: -1}
     PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    IsLocked: 0
+    TouchCount: 0
   Requirements:
   - RequiredCount: 8
     PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
   - RequiredCount: 1
     PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
   PerfectMoveCount: 2
+  Seed: 0
+  Flags:
+    DisableMoveCounter: 0
+    DisableStars: 0
+    DisableUndo: 0
+    DisableHInts: 0
+    DisableStarCounter: 0
+    DisableRequirements: 0
+    DisablePieces: 0
+    DisableInput: 0
+    ExtraPrefab: {fileID: 0}

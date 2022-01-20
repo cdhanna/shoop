@@ -75,7 +75,9 @@ public class NextButtonBehaviour : MonoBehaviour
         var obj = GameObject.FindObjectOfType<StarCounterBehaviour>();
         if (obj && !GameBoardBehaviour.Flags.DisableStars)
         {
-            var delta = StarStateProvider.SagaState.SaveBestStarsForLevel(LevelLoader.Instance.SagaMap, StarStateProvider.SagaState.GetLevelIndex(LevelLoader.Instance.SagaMap),  3 - (GameBoardBehaviour.MoveCount - GameBoardBehaviour.BoardObject.PerfectMoveCount) );
+            var delta = 3;
+            if (LevelLoader.Instance.SagaMap)
+                delta = StarStateProvider.SagaState.SaveBestStarsForLevel(LevelLoader.Instance.SagaMap, StarStateProvider.SagaState.GetLevelIndex(LevelLoader.Instance.SagaMap),  3 - (GameBoardBehaviour.MoveCount - GameBoardBehaviour.BoardObject.PerfectMoveCount) );
 
             this.DoRoutine(obj.TakeNewStars(delta), () =>
             {

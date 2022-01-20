@@ -244,8 +244,10 @@ public class GameBoardBehaviour : MonoBehaviour
             Requirements = BoardObject.Requirements,
             Slots = PieceBehaviours.Select(p => new GameBoardSlot
             {
+                IsLocked = p.IsLocked,
                 Location = p.Location,
-                PieceObject = p.PieceObject
+                PieceObject = p.PieceObject,
+                TouchCount = 0
             }).ToList()
         };
     }
@@ -335,8 +337,9 @@ public class GameBoardBehaviour : MonoBehaviour
                 return;
             }
             
+            
             // if the current click is in the stack, this is a deselection
-            if (HoverStack.Contains(instance) || instance.PieceObject == StackType)
+            if (HoverStack.Contains(instance) || instance.PieceObject == StackType || instance.IsLocked)
             {
                 ClearStack(false);
                 return;
@@ -867,6 +870,11 @@ public class SwapMove
         explosion.transform.localPosition = Target.transform.localPosition;
         explosion.Blowup();
         CameraShakeBehaviour.TryShake(.4f, .2f);
+
+        if (Target.IsLocked)
+        {
+            return;
+        }
         Target.Set(GroupType);
 
         Board.CameraTargetGroup.m_Targets[Board.CameraTargetGroup.FindMember(Target.transform)].radius = 5;
@@ -883,6 +891,8 @@ public class SwapMove
 
             foreach (var piece in Group)
             {
+                if (piece.IsLocked) continue; // don't swap.
+                
                 piece.Set(TargetType);
                 // explosion = Object.Instantiate(ExplosionBehaviour, Board.transform);
                 // explosion.SetColor(TargetType.Color);

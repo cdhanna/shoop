@@ -187,7 +187,7 @@ public class GameBoardState
         var destSlots = dest.Slots.ToDictionary(s => s.Location);
         
         // ASSUMPTION: all the keys are the same in startSlots...
-        var differences = startSlots.Where(kvp => kvp.Value.PieceObject != destSlots[kvp.Key].PieceObject).ToList();
+        var differences = startSlots.Where(kvp => kvp.Value.PieceObject != destSlots[kvp.Key].PieceObject || kvp.Value.TouchCount != destSlots[kvp.Key].TouchCount).ToList();
         var groups = differences.GroupBy(s => s.Value.PieceObject).ToList();
 
         if (groups.Count != 2)
@@ -377,7 +377,8 @@ public class GameBoardState
         foreach (var cluster in clusters)
         {
             if (cluster.Count == 0) continue;
-            
+
+            if (cluster.All(c => c.IsLocked)) continue;
 
             var clusterPiece = cluster.First().PieceObject;
             var clusterLocations = new HashSet<Vector2Int>(cluster.Select(c => c.Location));
@@ -391,10 +392,13 @@ public class GameBoardState
             
             // identify all neighbors of cluster
             var neighbors = GetNeighbors(cluster);
+            
             foreach (var neighbor in neighbors)
             {
                 // we could do a swap of this cluster, with this neighbor
 
+                if (neighbor.IsLocked) continue;
+                
                 var targetPiece = neighbor.PieceObject;
                 var targetLocation = neighbor.Location;
        
@@ -402,12 +406,17 @@ public class GameBoardState
                 for (var i = 0; i < Slots.Count; i++)
                 {
                     var local = Slots[i].Location;
+                    
                     var isTarget = local == targetLocation;
                     var isCluster = clusterMask[i];
+                    var nextPiece = isTarget ? clusterPiece : (isCluster ? targetPiece : Slots[i].PieceObject);
+                    var changed = isCluster;
                     nextSlots2[i] = new GameBoardSlot
                     {
                         Location = Slots[i].Location,
-                        PieceObject = isTarget ? clusterPiece : (isCluster ? targetPiece : Slots[i].PieceObject)
+                        PieceObject = Slots[i].IsLocked ? Slots[i].PieceObject : nextPiece,
+                        IsLocked = Slots[i].IsLocked,
+                        TouchCount = changed ? (Slots[i].TouchCount + 1) : Slots[i].TouchCount
                     };
                 }
                 
@@ -415,7 +424,8 @@ public class GameBoardState
                 {
                     Requirements = Requirements,
                     Slots = nextSlots2.ToList(),
-                    MovesTaken = MovesTaken + 1
+                    MovesTaken = MovesTaken + 1,
+                    
                 };
                 
                 yield return nextState;
