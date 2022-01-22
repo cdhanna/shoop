@@ -9,6 +9,7 @@ public class SettingsManager : MonoBehaviour
 {
     public AudioMixer Mixer;
     public PostProcessProfile Profile;
+    public Camera Camera;
 
     public void ToggleMusic() => MusicEnabled = !MusicEnabled;
     public void ToggleSound() => SoundEnabled = !SoundEnabled;
@@ -103,6 +104,9 @@ public class SettingsManager : MonoBehaviour
         Profile.GetSetting<Bloom>().enabled.value = enabled;
         Profile.GetSetting<Vignette>().enabled.value = enabled;
         Profile.GetSetting<ChromaticAberration>().enabled.value = enabled;
+
+        if (Camera)
+        Camera.GetComponent<PostProcessVolume>().enabled = enabled;
     }
 }
 

@@ -641,7 +641,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 73.05
+  m_fontSize: 78.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 154.45
+  m_fontSize: 129.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4463,7 +4463,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.35
+  m_fontSize: 47.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4682,6 +4682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mixer: {fileID: 24100000, guid: 0d33e3ad10313fd469abc81c0a3abe06, type: 2}
   Profile: {fileID: 11400000, guid: c29a1a6b0e407d943b1df488da01f842, type: 2}
+  Camera: {fileID: 470900691}
   MusicButton: {fileID: 888113097}
   SoundButton: {fileID: 305859783}
   VFXButton: {fileID: 25035478}
@@ -5334,7 +5335,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.2
+  m_fontSize: 102.55
   m_fontSizeBase: 102
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6161,7 +6162,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 129.9
+  m_fontSize: 135.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8253,7 +8254,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 148.4
+  m_fontSize: 188.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

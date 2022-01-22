@@ -51,20 +51,20 @@ MonoBehaviour:
     UseGenerator: 1
   - desc: 7
     index: 6
-    LevelObject: {fileID: 0}
-    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
-    Seed: 1
-    UseGenerator: 1
-  - desc: 8
-    index: 7
     LevelObject: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: 1
     UseGenerator: 0
   - desc: asdf
-    index: 15
+    index: 7
     LevelObject: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
     GeneratorObject: {fileID: 0}
     Seed: 1
     UseGenerator: 0
+  - desc: double lock
+    index: 8
+    LevelObject: {fileID: 0}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 1
   ContinuationGeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}

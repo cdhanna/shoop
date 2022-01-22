@@ -129,6 +129,7 @@ public class GameBoardBehaviour : MonoBehaviour
     public GameFlags Flags = new GameFlags();
 
     public TextMeshProUGUI ContinueText;
+    public TextMeshProUGUI FPSText;
     private int _lastInputListenerText;
     private Sequence _inputSequence;
     private Sequence _inputSequenceShow;
@@ -148,7 +149,8 @@ public class GameBoardBehaviour : MonoBehaviour
         var curState = GetBoardState();
         CurrentCounts = curState.PieceCounts;
 
-
+        FPSText.text = (1f / Time.unscaledDeltaTime).ToString("00");
+        
         void HandleWinTracker()
         {
             if (IsWin && !_wasWon)
