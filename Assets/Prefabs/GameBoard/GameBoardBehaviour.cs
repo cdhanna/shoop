@@ -74,6 +74,14 @@ public class GameBoardBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //
+        // var r = .3f;
+        // Screen.SetResolution((int) (Screen.width * r), (int)(Screen.height * r), true);
+
+        if (CurrentCounts == null)
+        {
+            CurrentCounts = new Dictionary<GamePieceObject, int>();
+        }
         if (LevelLoader.TryGetLevelLoader(out var loader))
         {
             BoardObject = loader.NextBoard;
@@ -144,13 +152,31 @@ public class GameBoardBehaviour : MonoBehaviour
     }
     
     // Update is called once per frame
+    private float _nextFpsUpdateTime;
     void Update()
     {
-        var curState = GetBoardState();
-        CurrentCounts = curState.PieceCounts;
+        // var curState = GetBoardState();
+        // CurrentCounts = curState.PieceCounts;
 
-        FPSText.text = (1f / Time.unscaledDeltaTime).ToString("00");
-        
+
+        CurrentCounts.Clear();
+        foreach (var piece in PieceBehaviours)
+        {
+            if (!CurrentCounts.TryGetValue(piece.PieceObject, out var count))
+            {
+                count = 0;
+            }
+
+            count++;
+            CurrentCounts[piece.PieceObject] = count;
+        }
+
+        if (Time.realtimeSinceStartup > _nextFpsUpdateTime)
+        {
+            _nextFpsUpdateTime = Time.realtimeSinceStartup + 1;
+            FPSText.text = (1f / Time.unscaledDeltaTime).ToString("00");
+        }
+
         void HandleWinTracker()
         {
             if (IsWin && !_wasWon)
@@ -535,6 +561,7 @@ public class GameBoardBehaviour : MonoBehaviour
         if (Swaps.Count == 0) return;
         var swap = Swaps.Pop();
         swap.Backwards();
+        RefreshWinCheck();
         DialAudioSource.PlayOneShot(SoundManifestObject.UndoSound, 1.5f);
 
         SwapCheck = null;
@@ -549,6 +576,8 @@ public class GameBoardBehaviour : MonoBehaviour
         var move = new SwapMove(this, HoverStack, SwapCheck) {ExplosionBehaviour = ExplosionBehaviour};
         move.Forwards(() =>
         {
+            RefreshWinCheck();
+
             _hintMove = null;
             MoveCount++;
             SetMoveText();
@@ -578,6 +607,7 @@ public class GameBoardBehaviour : MonoBehaviour
         };
         move.Forwards(() =>
         {
+            RefreshWinCheck();
             _hintMove = null;
 
             MoveCount++;
@@ -751,15 +781,16 @@ public class GameBoardBehaviour : MonoBehaviour
         gamePieceBehaviour.SelectInStack();
     }
 
+
+    public void RefreshWinCheck()
+    {
+        IsWin = GetBoardState().IsWin;
+    }
+    
     public bool IsWin
     {
-        get
-        {
-            return GetBoardState().IsWin;
-            // var counts = GetPieceCounts;
-            // return BoardObject.Requirements.All(r =>
-            //     counts.TryGetValue(r.PieceObject, out var currentCount) && currentCount == r.RequiredCount);
-        }
+        get;
+        private set;
     }
 
     Dictionary<GamePieceObject, int> GetPieceCounts => PieceBehaviours

@@ -46,22 +46,22 @@ Transform:
   - {fileID: 1110672239970240327}
   - {fileID: 1110672241120499545}
   - {fileID: 1110672241880335547}
-  - {fileID: 1110672241560587784}
-  - {fileID: 1110672240981617749}
-  - {fileID: 1110672240656222450}
-  - {fileID: 1110672240543290519}
-  - {fileID: 1110672241926040501}
   - {fileID: 1110672240582527712}
-  - {fileID: 1110672241655507144}
-  - {fileID: 1110672241046208998}
-  - {fileID: 1110672240751296462}
-  - {fileID: 1110672241425114353}
   - {fileID: 1110672241353134006}
   - {fileID: 1110672240574486222}
   - {fileID: 1110672240655128632}
   - {fileID: 1110672240310874332}
   - {fileID: 1110672241371095262}
   - {fileID: 1110672239944252715}
+  - {fileID: 1110672241560587784}
+  - {fileID: 1110672240981617749}
+  - {fileID: 1110672240656222450}
+  - {fileID: 1110672240543290519}
+  - {fileID: 1110672241926040501}
+  - {fileID: 1110672241655507144}
+  - {fileID: 1110672241046208998}
+  - {fileID: 1110672240751296462}
+  - {fileID: 1110672241425114353}
   - {fileID: 69877525354818441}
   - {fileID: 3222438131006111166}
   - {fileID: 9189101028087696069}
@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftBorder (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4979376835757122689, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7528761480124212403, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -279,6 +283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftBorder (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4979376835757122689, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7528761480124212403, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -352,24 +360,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (7)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.b
-      value: 0.7055441
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9716981
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6569657
-      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_DrawMode
       value: 0
@@ -380,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -412,15 +412,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -466,7 +466,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (9)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -494,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -562,14 +566,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
---- !u!212 &674785377394023523 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-  m_PrefabInstance: {fileID: 2960446894890254538}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1110672240582527712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+  m_PrefabInstance: {fileID: 2960446894890254538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &674785377394023523 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
   m_PrefabInstance: {fileID: 2960446894890254538}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960446894897945828
@@ -581,7 +585,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (15)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -592,12 +600,24 @@ PrefabInstance:
       value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.r
+      value: 0.50284195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -665,14 +685,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
---- !u!4 &1110672240574486222 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-  m_PrefabInstance: {fileID: 2960446894897945828}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &674785377401798733 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+  m_PrefabInstance: {fileID: 2960446894897945828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1110672240574486222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
   m_PrefabInstance: {fileID: 2960446894897945828}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960446894946058968
@@ -684,24 +704,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (6)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9150943
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.g
-      value: 0.86041886
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8900079
-      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_DrawMode
       value: 0
@@ -712,7 +724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -744,15 +756,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -798,7 +810,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (16)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -809,12 +825,24 @@ PrefabInstance:
       value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.r
+      value: 0.50284195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -882,14 +910,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
---- !u!212 &674785377287868091 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-  m_PrefabInstance: {fileID: 2960446894947062290}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1110672240655128632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+  m_PrefabInstance: {fileID: 2960446894947062290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &674785377287868091 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
   m_PrefabInstance: {fileID: 2960446894947062290}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960446894989817316
@@ -901,12 +929,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (12)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.b
       value: 0.9150943
@@ -929,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -957,19 +993,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9944554
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10515948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -981,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -12.073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779038092364314557, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: MinSpeed
@@ -1015,7 +1051,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (19)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -1024,6 +1064,10 @@ PrefabInstance:
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.y
       value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.g
@@ -1039,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -1126,7 +1170,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (1)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -1135,6 +1183,14 @@ PrefabInstance:
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.y
       value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.r
@@ -1229,7 +1285,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -1238,6 +1298,18 @@ PrefabInstance:
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.y
       value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.r
+      value: 0.50284195
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_SortingOrder
@@ -1309,14 +1381,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
---- !u!4 &1110672240341636663 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-  m_PrefabInstance: {fileID: 2960446895671729181}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &674785376561168564 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+  m_PrefabInstance: {fileID: 2960446895671729181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1110672240341636663 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
   m_PrefabInstance: {fileID: 2960446895671729181}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960446895690185462
@@ -1328,7 +1400,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (17)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -1339,12 +1415,24 @@ PrefabInstance:
       value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.r
+      value: 0.50284195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -1431,12 +1519,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (4)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.b
       value: 0.9150943
@@ -1459,7 +1555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -1491,15 +1587,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1545,12 +1641,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (10)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1573,7 +1677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -1601,19 +1705,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9944554
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10515948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1625,7 +1729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -12.073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779038092364314557, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: MinSpeed
@@ -1659,7 +1763,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (3)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -1668,6 +1776,14 @@ PrefabInstance:
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.y
       value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.r
@@ -1747,14 +1863,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
---- !u!4 &1110672241880335547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-  m_PrefabInstance: {fileID: 2960446896137735825}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &674785377975259704 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+  m_PrefabInstance: {fileID: 2960446896137735825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1110672241880335547 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
   m_PrefabInstance: {fileID: 2960446896137735825}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960446896234815903
@@ -1766,24 +1882,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (8)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9150943
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.g
-      value: 0.86041886
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8900079
-      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_DrawMode
       value: 0
@@ -1794,7 +1902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -1822,19 +1930,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9944554
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10515948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1846,7 +1954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -12.073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779038092364314557, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: MinSpeed
@@ -1880,24 +1988,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (5)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9150943
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.g
-      value: 0.86041886
-      objectReference: {fileID: 0}
-    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8900079
-      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_DrawMode
       value: 0
@@ -1908,7 +2008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -1940,15 +2040,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1994,12 +2094,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (11)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.b
       value: 0.9150943
@@ -2022,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -2050,19 +2158,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9944554
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10515948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2074,7 +2182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -12.073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779038092364314557, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: MinSpeed
@@ -2108,7 +2216,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (2)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -2204,14 +2316,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
---- !u!4 &1110672241120499545 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
-  m_PrefabInstance: {fileID: 2960446896499809651}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &674785377929789914 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+  m_PrefabInstance: {fileID: 2960446896499809651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1110672241120499545 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
   m_PrefabInstance: {fileID: 2960446896499809651}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2960446896665331100
@@ -2223,7 +2335,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (14)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -2234,12 +2350,24 @@ PrefabInstance:
       value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.r
+      value: 0.50284195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -2326,7 +2454,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (18)
+      value: clouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.x
@@ -2335,6 +2467,10 @@ PrefabInstance:
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Size.y
       value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.g
@@ -2350,7 +2486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -2437,12 +2573,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Name
-      value: SpinningDecor (13)
+      value: dots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351697979777990642, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2092fb9d10868bd479cd5e6edb5153fe, type: 3}
+    - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
     - target: {fileID: 2326337346358041769, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_Color.b
       value: 0.9150943
@@ -2465,7 +2609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalScale.x
@@ -2493,19 +2637,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9944554
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10515948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2517,7 +2661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773223689571306026, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -12.073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779038092364314557, guid: 02af433ab545d9e478bcc38da56a2f93, type: 3}
       propertyPath: MinSpeed
@@ -2556,6 +2700,10 @@ PrefabInstance:
     - target: {fileID: 4979376835757122689, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
       propertyPath: m_Name
       value: LeftBorder (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979376835757122689, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7528761480124212403, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
       propertyPath: m_RootOrder
@@ -2631,6 +2779,10 @@ PrefabInstance:
     - target: {fileID: 4979376835757122689, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
       propertyPath: m_Name
       value: LeftBorder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979376835757122689, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7528761480124212403, guid: f31a3b49e60a6414bbdbb20180d93225, type: 3}
       propertyPath: m_RootOrder

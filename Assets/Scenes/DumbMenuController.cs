@@ -35,11 +35,22 @@ public class DumbMenuController : MonoBehaviour
 
     public bool isHome = true;
     public List<MenuTransitionBehaviour> TransitionBehaviours;
-    
-    
+
+    private static bool _halfRes;
     // Start is called before the first frame update
     void Start()
     {
+        if (!_halfRes)
+        {
+            _halfRes = true;
+            var r = .5f;
+            Screen.SetResolution((int) (Screen.width * r), (int) (Screen.height * r), true);
+        }
+
+        // Application.targetFrameRate = 40;
+        // var r = .3f;
+        // Screen.SetResolution((int) (Screen.width * r), (int)(Screen.height * r), true);
+        //
         CanvasGroup.alpha = 0;
         CanvasGroup.DOFade(1, .4f);
         // CanvasGroup.

@@ -10,49 +10,61 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1882c4318825f1e4ebd5c48dcb9f1279, type: 3}
-  m_Name: Tutorial3
+  m_Name: LockIntro
   m_EditorClassIdentifier: 
   Slots:
   - Location: {x: 0, y: 0}
-    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
     IsLocked: 0
     TouchCount: 0
   - Location: {x: 1, y: 0}
     PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
-    IsLocked: 0
+    IsLocked: 1
     TouchCount: 0
   - Location: {x: 2, y: 0}
+    PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 0, y: 1}
     PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
     IsLocked: 0
     TouchCount: 0
   - Location: {x: 1, y: 1}
-    PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
     IsLocked: 0
     TouchCount: 0
   - Location: {x: 2, y: 1}
-    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
+    PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    IsLocked: 0
+    TouchCount: 0
+  - Location: {x: 0, y: 2}
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
     IsLocked: 0
     TouchCount: 0
   - Location: {x: 1, y: 2}
-    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+    PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
+    IsLocked: 1
+    TouchCount: 0
+  - Location: {x: 2, y: 2}
+    PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
     IsLocked: 0
     TouchCount: 0
   Requirements:
-  - RequiredCount: 4
-    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
-  - RequiredCount: 1
+  - RequiredCount: 3
+    PieceObject: {fileID: 11400000, guid: a6eeff98b8b4d2c44a155460848b582d, type: 2}
+  - RequiredCount: 3
     PieceObject: {fileID: 11400000, guid: 7e657a07ed5957444ae72f14fbda1160, type: 2}
-  - RequiredCount: 1
-    PieceObject: {fileID: 11400000, guid: 3870890ea0c46ef4abaf97074ec5b0b3, type: 2}
-  PerfectMoveCount: 2
+  - RequiredCount: 3
+    PieceObject: {fileID: 11400000, guid: 0bd650d612090b7428ffe49805c731cf, type: 2}
+  PerfectMoveCount: 1
   Seed: 0
   Flags:
-    DisableMoveCounter: 0
+    DisableMoveCounter: 1
     DisableStars: 1
-    DisableUndo: 0
+    DisableUndo: 1
     DisableHInts: 1
     DisableStarCounter: 1
     DisableRequirements: 1
     DisablePieces: 1
-    DisableInput: 0
-    ExtraPrefab: {fileID: 140957362640959605, guid: 20513fb78ac0a194fb59e3db47488628, type: 3}
+    DisableInput: 1
+    ExtraPrefab: {fileID: 140957362640959605, guid: dd2c4628a7af3504190cf715f4c3d33e, type: 3}

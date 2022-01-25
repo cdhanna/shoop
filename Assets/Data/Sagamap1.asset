@@ -51,9 +51,9 @@ MonoBehaviour:
     UseGenerator: 1
   - desc: 7
     index: 6
-    LevelObject: {fileID: 11400000, guid: 06a9acec52daf9c4f8f32b20ca454c25, type: 2}
-    GeneratorObject: {fileID: 0}
-    Seed: 1
+    LevelObject: {fileID: 11400000, guid: e589cbc0a91884d4893d6e1b49ba5f74, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 4
     UseGenerator: 0
   - desc: asdf
     index: 7
@@ -61,8 +61,26 @@ MonoBehaviour:
     GeneratorObject: {fileID: 0}
     Seed: 1
     UseGenerator: 0
-  - desc: double lock
+  - desc: lockIntro
     index: 8
+    LevelObject: {fileID: 11400000, guid: dbeafe2a7b360644cb7bea3eb19b837a, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  - desc: lockIntro2
+    index: 9
+    LevelObject: {fileID: 11400000, guid: c2fc5360ce690b64396672edc0787473, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  - desc: 
+    index: 10
+    LevelObject: {fileID: 0}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 4
+    UseGenerator: 1
+  - desc: double lock
+    index: 12
     LevelObject: {fileID: 0}
     GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
     Seed: 1

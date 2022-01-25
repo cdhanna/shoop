@@ -26,17 +26,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140957362579909286}
-  m_LocalRotation: {x: -0, y: -0, z: -0.062312875, w: 0.9980567}
+  m_LocalRotation: {x: -0, y: -0, z: -0.004451564, w: 0.9999901}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 140957362640959601}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.51}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: 153.51}
-  m_SizeDelta: {x: 391.98, y: 248.19}
+  m_AnchoredPosition: {x: 26, y: 102}
+  m_SizeDelta: {x: 515.06, y: 248.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &140957362579909285
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You\nCan
+  m_text: Well...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b39cb22bd5316594abd3fa01703d33f9, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 31aebd8dc6230134ebaf4262e0ec24ee, type: 2}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 123.5
+  m_fontSize: 154.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 140957362640959602}
   - component: {fileID: 286650939819553176}
   m_Layer: 5
-  m_Name: Level8
+  m_Name: LockIntro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &140957362640959602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   - Texts:
     - {fileID: 140957362579909282}
     - {fileID: 1648100349609255955}
-    InterDelay: 0.8
-    GroupDelay: 4
+    InterDelay: 1
+    GroupDelay: 1
     Duration: 2
   Index: 0
   Board: {fileID: 0}
@@ -309,17 +309,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2170061428171636985}
-  m_LocalRotation: {x: -0, y: -0, z: 0.1085424, w: 0.9940918}
+  m_LocalRotation: {x: -0, y: -0, z: 0.015600312, w: 0.99987835}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 140957362640959601}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.788}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -129, y: -267}
-  m_SizeDelta: {x: 391.98, y: 299.46}
+  m_AnchoredPosition: {x: 68, y: -355}
+  m_SizeDelta: {x: 695.86, y: 210.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7525155593432668568
 CanvasRenderer:
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Do\nIt!!
+  m_text: Go on then...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b39cb22bd5316594abd3fa01703d33f9, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 31aebd8dc6230134ebaf4262e0ec24ee, type: 2}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 149.05
+  m_fontSize: 105
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

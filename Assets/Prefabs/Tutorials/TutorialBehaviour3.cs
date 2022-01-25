@@ -94,6 +94,8 @@ public class TutorialBehaviour3 : MonoBehaviour
         yield return new WaitForSecondsSkippable(BoardBehaviour, 3);
 
         MoveCounterText1.DOFade(0, .3f).WaitForCompletion();
+        Destroy(MoveCounterText1);
+
         yield return new WaitForSecondsRealtime(.2f);
 
         yield return MoveCounterText2.DOFade(1, .3f).WaitForCompletion();
@@ -101,6 +103,8 @@ public class TutorialBehaviour3 : MonoBehaviour
         yield return new WaitForSecondsSkippable(BoardBehaviour, 15);
 
         yield return MoveCounterText2.DOFade(0, .3f).WaitForCompletion();
+        Destroy(MoveCounterText2);
+
         yield return new WaitForSecondsSkippable(BoardBehaviour,.5f);
 
         BoardBehaviour.Flags.DisableInput = true;
@@ -117,7 +121,10 @@ public class TutorialBehaviour3 : MonoBehaviour
 
         yield return Stars1.DOFade(0, .2f).WaitForCompletion();
         yield return Stars2.DOFade(0, .2f).WaitForCompletion();
+        Destroy(Stars1);
+        Destroy(Stars2);
 
+        
         yield return new WaitForSecondsRealtime(.3f);
 
         yield return Lose1.DOFade(1, .3f).WaitForCompletion();
@@ -128,6 +135,8 @@ public class TutorialBehaviour3 : MonoBehaviour
         yield return Lose1.DOFade(0, .2f).WaitForCompletion();
         yield return Lose2.DOFade(0, .2f).WaitForCompletion();
         BoardBehaviour.Flags.DisableMoveCounter = false;
+        Destroy(Lose1);
+        Destroy(Lose2);
 
         yield return new WaitForSecondsSkippable(BoardBehaviour,.5f);
 
@@ -138,9 +147,12 @@ public class TutorialBehaviour3 : MonoBehaviour
         yield return SolveAway.DOFade(1, .4f).WaitForCompletion();
         yield return new WaitForSecondsRealtime(1.5f);
         yield return SolveAway.DOFade(0, .4f).WaitForCompletion();
+        Destroy(SolveAway);
+
+        // var wait = new WaitForSecondsRealtime(.2f);
 
         while (!BoardBehaviour.IsWinForAMoment) yield return null;
-        
+        //
         BoardBehaviour.Flags.DisableStarCounter = false;
         BoardBehaviour.Flags.DisableUndo = true;
 
@@ -150,6 +162,8 @@ public class TutorialBehaviour3 : MonoBehaviour
         yield return new WaitForSecondsRealtime(.25f);
         yield return Win2.DOFade(1, .1f).WaitForCompletion();
 
+        yield return new WaitForSecondsRealtime(1);
+        Destroy(gameObject);
 
         //     .Append()
         //     .AppendInterval(.2f)

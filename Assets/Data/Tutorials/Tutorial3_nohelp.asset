@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1882c4318825f1e4ebd5c48dcb9f1279, type: 3}
-  m_Name: Tutorial3
+  m_Name: Tutorial3_nohelp
   m_EditorClassIdentifier: 
   Slots:
   - Location: {x: 0, y: 0}
@@ -48,11 +48,11 @@ MonoBehaviour:
   Seed: 0
   Flags:
     DisableMoveCounter: 0
-    DisableStars: 1
+    DisableStars: 0
     DisableUndo: 0
-    DisableHInts: 1
-    DisableStarCounter: 1
-    DisableRequirements: 1
-    DisablePieces: 1
+    DisableHInts: 0
+    DisableStarCounter: 0
+    DisableRequirements: 0
+    DisablePieces: 0
     DisableInput: 0
-    ExtraPrefab: {fileID: 140957362640959605, guid: 20513fb78ac0a194fb59e3db47488628, type: 3}
+    ExtraPrefab: {fileID: 0}

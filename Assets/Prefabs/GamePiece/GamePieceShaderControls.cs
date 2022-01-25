@@ -69,6 +69,7 @@ public class GamePieceShaderControls : MonoBehaviour
             Block = new MaterialPropertyBlock();
         }
         
+        
         Block.SetTexture("_MainTex", Renderer.sprite.texture);
         if (NextSprite != null)
             Block.SetTexture("_Main2Tex", NextSprite);

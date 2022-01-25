@@ -46,6 +46,12 @@ public class GamePieceBehaviour : MonoBehaviour
         // select a random sound for the selection
         SelectionAudioSource.clip =
             SoundManifestObject.SelectionSounds[Random.Range(0, SoundManifestObject.SelectionSounds.Count)];
+
+
+        if (PieceObject)
+        {
+            Set(PieceObject);
+        }
     }
 
     private Coroutine scaleRoutine;
@@ -145,12 +151,18 @@ public class GamePieceBehaviour : MonoBehaviour
             StopCoroutine(scaleRoutine);
             
         };
-        scaleRoutine = StartCoroutine(SetScale(startScale, startScale * 1.1f, .2f));
+
+        float speedModify = 1;
+        #if UNITY_ANDROID
+        speedModify = 1f;
+        #endif
+        
+        scaleRoutine = StartCoroutine(SetScale(startScale, startScale * 1.1f, .2f * speedModify));
         // BackgroundRenderer.color = PieceObject.Color;
         // ShaderControls.BorderColor = SelectedColor;
         var selectionColor = GetSelectionColor();
 
-        SelectionCloudControls.SetColors(PieceObject.Color, DeselectedColor);
+        SelectionCloudControls.SetColors(PieceObject.Color, DeselectedColor, .3f * speedModify);
 
         var brighter = selectionColor;
         brighter = Color.Lerp(brighter, Color.white, .5f);
@@ -162,7 +174,7 @@ public class GamePieceBehaviour : MonoBehaviour
         }
 
         
-        ShaderControls.SetColors(selectionColor, brighter);
+        ShaderControls.SetColors(selectionColor, brighter, .3f * speedModify);
         SetTargetGroupWeight(1 + .07f * Mathf.Pow(GameBoardBehaviour.HoverStack.Count, .2f));
 
         SelectionAudioSource.Play();

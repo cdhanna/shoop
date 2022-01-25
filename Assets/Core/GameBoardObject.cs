@@ -15,6 +15,16 @@ public class GameBoardObject : ScriptableObject
     
     public IEnumerable<GameBoardSlot> ValidSlots => Slots.Where(s => s != null);
     
+    
+    [ContextMenu("Save To Disk")]
+    public void WriteToDisk()
+    {
+        // UnityEditor.EditorUtility.Save
+        var path = UnityEditor.EditorUtility.SaveFilePanelInProject("Save path", "level", "asset", "Save the object");
+        if (string.IsNullOrEmpty(path)) return;
+        UnityEditor.AssetDatabase.CreateAsset(this, path);
+    }
+    
     public RectInt ValidBounds 
     {
         get
@@ -63,6 +73,7 @@ public class GameBoardSlot
     {
         return CombineHashCodes(Location.x, CombineHashCodes(Location.y, CombineHashCodes(IsLocked ? 2 : 1, CombineHashCodes(PieceObject.Code, TouchCount+1))));
     }
+
     
     private static int CombineHashCodes(int h1, int h2)
     {
