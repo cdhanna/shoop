@@ -16,6 +16,7 @@ public class GameBoardObject : ScriptableObject
     public IEnumerable<GameBoardSlot> ValidSlots => Slots.Where(s => s != null);
     
     
+    #if UNITY_EDITOR
     [ContextMenu("Save To Disk")]
     public void WriteToDisk()
     {
@@ -24,6 +25,7 @@ public class GameBoardObject : ScriptableObject
         if (string.IsNullOrEmpty(path)) return;
         UnityEditor.AssetDatabase.CreateAsset(this, path);
     }
+    #endif
     
     public RectInt ValidBounds 
     {
