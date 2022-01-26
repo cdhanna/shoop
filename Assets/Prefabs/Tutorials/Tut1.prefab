@@ -252,7 +252,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &140957362640959602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,8 +1299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.887}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.116, y: 112}
-  m_SizeDelta: {x: 572.51, y: 485.28}
+  m_AnchoredPosition: {x: 21.065, y: -93.83}
+  m_SizeDelta: {x: 572.51, y: 918.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1378393958822889015
 CanvasRenderer:
@@ -1330,7 +1330,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Swap pieces \nuntil the counts are correct..."
+  m_text: Select pieces and swap 'em until the counts are correct\n\n\nRemember,
+    you can select groups of pieces all at once
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b39cb22bd5316594abd3fa01703d33f9, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 31aebd8dc6230134ebaf4262e0ec24ee, type: 2}
@@ -1357,7 +1358,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.8
+  m_fontSize: 73.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

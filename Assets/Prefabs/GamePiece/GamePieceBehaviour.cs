@@ -173,6 +173,10 @@ public class GamePieceBehaviour : MonoBehaviour
             LockedShaderControls.SetColors(Color.black, Color.Lerp(GetSelectionColor(.8f), Color.white, .8f));
         }
 
+
+        ShaderControls.Renderer.sortingOrder = 4;
+        LockedShaderControls.Renderer.sortingOrder = 5;
+        SelectionCloudControls.Renderer.sortingOrder = 3;
         
         ShaderControls.SetColors(selectionColor, brighter, .3f * speedModify);
         SetTargetGroupWeight(1 + .07f * Mathf.Pow(GameBoardBehaviour.HoverStack.Count, .2f));
@@ -198,6 +202,10 @@ public class GamePieceBehaviour : MonoBehaviour
 
     public void DeselectInStack()
     {
+        
+        ShaderControls.Renderer.sortingOrder = 0;
+        LockedShaderControls.Renderer.sortingOrder = 1;
+        SelectionCloudControls.Renderer.sortingOrder = -1;
         _isSelected = false;
         if (scaleRoutine != null)
         {

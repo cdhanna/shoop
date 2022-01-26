@@ -627,14 +627,14 @@ public class GameBoardBehaviour : MonoBehaviour
         return PieceBehaviours.Where(p => slots.Any(s => s.Location == p.Location)).ToList();
     }
 
-    void TryToAddToStack(GameBoardSlot slot, GamePieceBehaviour gamePieceBehaviour)
+    void TryToAddToStack(GameBoardSlot slot, GamePieceBehaviour gamePieceBehaviour, bool force=false)
     {
 
         if (Flags.DisableInput) return;
         if ( !Flags.DisableStars && (MovesLeft == -2 || IsWin)) return; 
         
         
-        if (HoverStack.Contains(gamePieceBehaviour))
+        if (!force && HoverStack.Contains(gamePieceBehaviour))
         {
             return; // we can't re-add this piece to the stack.
         }
@@ -646,7 +646,7 @@ public class GameBoardBehaviour : MonoBehaviour
         }
 
 
-        if (!IsSlotNextToStack(slot))
+        if (!force && !IsSlotNextToStack(slot))
         {
             return; // if no piece is within one block, we can't add this.
         }
@@ -715,8 +715,8 @@ public class GameBoardBehaviour : MonoBehaviour
     
             yield return new WaitForSecondsRealtime(.7f); // TODO: We can splice this with the actual move calculation to smooth out lag.
 
-            var boardState = GetBoardState();
-            var moves = GameBoardAI.Solve(boardState).ToList();
+            // var boardState = GetBoardState();
+            // var moves = GameBoardAI.Solve(boardState).ToList();
             
             var move = GameBoardAI.Solve(GetBoardState()).FirstOrDefault();
             _hintMove = move;
@@ -727,7 +727,7 @@ public class GameBoardBehaviour : MonoBehaviour
                 var slot = this.BoardObject.Slots.FirstOrDefault(s => s.Location == clusterPiece.Location);
                 var piece = PieceBehaviours.FirstOrDefault(p => p.Location == clusterPiece.Location);
 
-                TryToAddToStack(slot, piece);
+                TryToAddToStack(slot, piece, true);
 
                 yield return new WaitForSecondsRealtime(.35f);
             }
