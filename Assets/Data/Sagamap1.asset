@@ -85,4 +85,34 @@ MonoBehaviour:
     GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
     Seed: 1
     UseGenerator: 1
-  ContinuationGeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+  - desc: scriptedhard1
+    index: 14
+    LevelObject: {fileID: -2604203352156995921, guid: d54d7b4089dbe4047aeb3248367ab48f, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  - desc: scriptedhard2
+    index: 16
+    LevelObject: {fileID: -8185637358842761967, guid: d54d7b4089dbe4047aeb3248367ab48f, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  - desc: scriptedhard3
+    index: 17
+    LevelObject: {fileID: -4045049215130390721, guid: d54d7b4089dbe4047aeb3248367ab48f, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  - desc: scriptedhard4
+    index: 19
+    LevelObject: {fileID: -2519601584590464728, guid: d54d7b4089dbe4047aeb3248367ab48f, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  - desc: scriptedhard5
+    index: 20
+    LevelObject: {fileID: 8385423189231296422, guid: d54d7b4089dbe4047aeb3248367ab48f, type: 2}
+    GeneratorObject: {fileID: 11400000, guid: d21b545687aa1b84e85614df29a2873f, type: 2}
+    Seed: 1
+    UseGenerator: 0
+  ContinuationGeneratorObject: {fileID: 11400000, guid: d54d7b4089dbe4047aeb3248367ab48f, type: 2}
